@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>How we use AI · Balance Lab</title>
+<meta name="description" content="The red lines, values and commitments Balance Lab holds itself to when using AI with mission-driven organisations.">
+<link rel="canonical" href="https://balance-lab.nl/how-we-use-ai/">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Balance Lab">
+<meta property="og:title" content="How we use AI · Balance Lab">
+<meta property="og:description" content="The red lines, values and commitments Balance Lab holds itself to when using AI with mission-driven organisations.">
+<meta property="og:url" content="https://balance-lab.nl/how-we-use-ai/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Balance Lab site. Brand: Figma brand kit (plum, peach, blush, paper; DM Sans + Inter). */
+:root{ --o:#4A7350; --green:#4A7350; --amber:#A8601F; --red:#9E2F3F; --green-bg:#E3EBDF; --amber-bg:#FBEAD6; --red-bg:#F4DCDF; --brand:#642C40; --on-brand:#FFFCF8;
+  --bg:#FFFCF8; --surface:#FFFFFF; --band:#642C40; --band-fg:#FFFCF8;
+  --fg:#34252C; --muted:#795762; --line:#D7C0BA;
+  --accent:#F5A57F; --accent-ink:#34252C; --soft:#FAEFE9; --lilac:#CBD8C5;
+  --display:"DM Sans","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --body:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;
+  --mono:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;
+  --r:4px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){ --d:#E9A9BE; --o:#A8C9A0; --green:#A8C9A0; --amber:#F5A57F; --red:#EE8A98; --green-bg:#23302A; --amber-bg:#3A2620; --red-bg:#3A1E26; --brand:#F5A57F; --on-brand:#2A1820;
+  --bg:#1F1519; --surface:#281B21; --band:#4A2131; --band-fg:#FFFCF8;
+  --fg:#F3E8E3; --muted:#C7AAB3; --line:#47323B;
+  --accent:#F5A57F; --accent-ink:#2A1820; --soft:#2A1C22; --lilac:#3A4636; color-scheme:dark}}
+:root[data-theme="dark"]{ --d:#E9A9BE; --o:#A8C9A0; --green:#A8C9A0; --amber:#F5A57F; --red:#EE8A98; --green-bg:#23302A; --amber-bg:#3A2620; --red-bg:#3A1E26; --brand:#F5A57F; --on-brand:#2A1820;
+  --bg:#1F1519; --surface:#281B21; --band:#4A2131; --band-fg:#FFFCF8;
+  --fg:#F3E8E3; --muted:#C7AAB3; --line:#47323B;
+  --accent:#F5A57F; --accent-ink:#2A1820; --soft:#2A1C22; --lilac:#3A4636; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.6}
+h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.015em}
+h1{font-size:clamp(2.5rem,6vw,4.4rem);font-weight:500}
+h2{font-size:clamp(1.9rem,3.8vw,2.8rem);font-weight:500}
+h3{font-size:1.25rem;font-weight:500;letter-spacing:-.005em}
+p{margin:0}
+a{color:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+section{padding-block:88px}
+.eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.lede{font-size:1.2rem;color:var(--muted);max-width:60ch}
+.btn{display:inline-flex;align-items:center;gap:.5em;font:600 1rem var(--body);padding:.85em 1.4em;border-radius:2px;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-ghost{border-color:currentColor;color:var(--fg)}
+
+
+/* Nav */
+header.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--lilac)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo svg{flex:none}
+.logo b{font:500 1.25rem var(--display);letter-spacing:-.02em}
+.logo small{display:block;font:500 .7rem var(--mono);letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+.nav ul{display:flex;gap:24px;list-style:none;margin:0;padding:0;font-weight:500;font-size:.95rem}
+.nav ul a{text-decoration:none;color:var(--muted)} .nav ul a:hover{color:var(--fg)}
+@media (max-width:900px){.nav ul{display:none}}
+@media (max-width:460px){.nav .btn{padding:.6em 1em;font-size:.9rem}}
+
+/* Hero */
+.hero{padding-block:72px 88px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero .text{display:grid;gap:24px;min-width:0}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 62%,var(--accent) 62% 90%,transparent 90%)}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px}
+.hero .small{font-size:.92rem;color:var(--muted)}
+.loopfig{width:100%;max-width:440px;justify-self:center}
+.loopfig text{font-family:var(--body)}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}.loopfig{max-width:360px}}
+@media (prefers-reduced-motion:no-preference){.loop-dot{animation:orbit 14s linear infinite;transform-origin:220px 220px}}
+@keyframes orbit{to{transform:rotate(360deg)}}
+
+/* Problem */
+.problem{background:var(--band);color:var(--band-fg)}
+.problem .eyebrow{color:color-mix(in srgb,var(--band-fg) 65%,transparent)}
+.problem .grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.problem .quote{font:500 clamp(1.7rem,3.4vw,2.5rem)/1.15 var(--display);letter-spacing:-.015em;text-wrap:balance}
+.problem .quote span{color:var(--accent)}
+.problem ul{list-style:none;padding:0;margin:0;display:grid;gap:22px}
+.problem li{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
+.problem li b{display:block;font-family:var(--display);font-size:1.12rem}
+.problem li p{color:color-mix(in srgb,var(--band-fg) 75%,transparent)}
+.tick{width:26px;height:26px;border-radius:50%;border:2px solid var(--accent);margin-top:3px}
+@media (max-width:820px){.problem .grid{grid-template-columns:1fr;gap:36px}}
+
+/* Section heads */
+.head{display:grid;gap:14px;margin-bottom:48px;max-width:720px}
+
+/* Approach */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:grid;gap:10px;align-content:start;min-width:0}
+.steps .n{font:500 .8rem var(--mono);color:var(--muted)}
+.steps p{color:var(--muted);font-size:.96rem}
+.steps li:last-child{background:var(--soft);border-color:transparent}
+.steps .back{font:500 .8rem var(--mono);color:var(--fg);margin-top:4px}
+@media (max-width:1000px){.steps{grid-template-columns:repeat(2,1fr)}.steps li:last-child{grid-column:1/-1}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+
+/* Offer ladder */
+.offer{background:var(--soft)}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.rung{background:var(--surface);border-radius:var(--r);padding:26px 24px;display:grid;grid-template-rows:auto auto auto 1fr auto;gap:12px;min-width:0;border:1px solid var(--line)}
+.rung .stage{font:500 .78rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.rung .meta{font-weight:600;font-size:.95rem}
+.rung ul{margin:0;padding-left:1.1em;color:var(--muted);font-size:.95rem;display:grid;gap:4px}
+.rung .price{border-top:1px solid var(--line);padding-top:14px;font:500 1.35rem var(--display);font-variant-numeric:tabular-nums}
+.rung .price small{display:block;font:400 .82rem var(--body);color:var(--muted)}
+.rung.core{background:var(--band);color:var(--band-fg);border-color:transparent;position:relative}
+.rung.core .stage,.rung.core ul,.rung.core .price small{color:color-mix(in srgb,var(--band-fg) 72%,transparent)}
+.rung.core .price{border-color:color-mix(in srgb,var(--band-fg) 22%,transparent)}
+.badge{position:absolute;top:-12px;right:18px;background:var(--accent);color:var(--accent-ink);font:600 .75rem var(--body);padding:4px 10px;border-radius:2px}
+.prices-hidden .price .amt{display:none}
+.prices-hidden .price::before{content:"Fixed price, shared on the intro call";font:600 1rem var(--body)}
+.prices-hidden .price.hourly::before{content:"Hourly rate, shared on the intro call"}
+.addon{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline;padding:16px 20px;border:1.5px dashed color-mix(in srgb,var(--fg) 30%,transparent);border-radius:var(--r)}
+.addon b{font-family:var(--display)}
+.addon span{color:var(--muted)}
+@media (max-width:1000px){.ladder{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.ladder{grid-template-columns:1fr}}
+
+/* Sprint timeline */
+.timeline{overflow-x:auto;margin-top:8px}
+.tl{display:grid;grid-template-columns:repeat(7,minmax(120px,1fr));min-width:840px;border-top:2px solid var(--fg)}
+.tl div{padding:14px 14px 0 0;display:grid;gap:6px;align-content:start}
+.tl .wk{font:500 .78rem var(--mono);color:var(--muted)}
+.tl b{font-family:var(--display);font-size:1.02rem;line-height:1.2}
+.tl p{font-size:.88rem;color:var(--muted)}
+.tl .m{position:relative}
+.tl .m::before{content:"";position:absolute;top:-8px;left:0;width:14px;height:14px;border-radius:50%;background:var(--accent)}
+.tl .m .wk{margin-top:10px}
+.roi{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.roi div{border-left:3px solid var(--accent);padding:4px 0 4px 16px;display:grid;gap:4px}
+.roi b{font-family:var(--display);font-size:1.1rem}
+.roi p{color:var(--muted);font-size:.95rem}
+@media (max-width:760px){.roi{grid-template-columns:1fr}}
+
+/* Why us */
+.why .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.why article{display:grid;gap:12px;align-content:start}
+.why .ic{width:52px;height:52px;border-radius:4px;background:var(--soft);display:grid;place-items:center}
+.why p{color:var(--muted)}
+@media (max-width:860px){.why .grid{grid-template-columns:1fr;gap:32px}}
+
+/* Use cases */
+.uses{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.uses span{background:var(--surface);border:1px solid var(--line);border-radius:2px;padding:8px 16px;font-size:.95rem}
+
+/* People */
+.people .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.person{display:grid;grid-template-columns:120px 1fr;gap:22px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.avatar{width:120px;height:120px;border-radius:4px;display:grid;place-items:center;font:500 2.2rem var(--display);color:var(--accent-ink)}
+.person .role{font:500 .78rem var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.person p{color:var(--muted);font-size:.96rem;margin-top:8px}
+@media (max-width:860px){.people .grid{grid-template-columns:1fr}}
+@media (max-width:460px){.person{grid-template-columns:1fr}.avatar{width:84px;height:84px;font-size:1.6rem}}
+
+/* FAQ */
+.faq{display:grid;gap:0;border-top:1px solid var(--line);max-width:820px}
+.faq details{border-bottom:1px solid var(--line);padding:18px 0}
+.faq summary{cursor:pointer;font:500 1.12rem var(--display);list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::after{content:"+";font-family:var(--mono);color:var(--muted)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{color:var(--muted);margin-top:10px;max-width:68ch}
+
+/* Contact */
+.contact{background:var(--band);color:var(--band-fg)}
+.contact .grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.contact .lede{color:color-mix(in srgb,var(--band-fg) 72%,transparent);margin-top:16px}
+form{display:grid;gap:14px}
+form label{font-size:.88rem;font-weight:600;display:grid;gap:6px}
+form input,form textarea{font:inherit;font-size:1rem;padding:12px 14px;border-radius:4px;border:1px solid color-mix(in srgb,var(--band-fg) 25%,transparent);background:color-mix(in srgb,var(--band-fg) 7%,transparent);color:var(--band-fg)}
+form .btn{justify-self:start}
+.formnote{font-size:.9rem;color:var(--accent);min-height:1.4em}
+@media (max-width:820px){.contact .grid{grid-template-columns:1fr;gap:36px}}
+
+footer{padding-block:40px;font-size:.9rem;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-between;align-items:center}
+
+/* Sub-page additions shared by the standalone mock-ups */
+.nav ul a[aria-current="page"]{color:var(--fg);box-shadow:inset 0 -2px 0 var(--accent)}
+.subhero{padding-block:64px 56px;border-bottom:1px solid var(--line)}
+.subhero .wrap{display:grid;gap:20px}
+.subhero h1{font-size:clamp(2.2rem,5vw,3.6rem);max-width:18ch}
+.crumb{font:500 .8rem var(--mono);color:var(--muted);letter-spacing:.04em}
+.crumb a{color:var(--muted)}
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.jump a{font-size:.9rem;text-decoration:none;border:1px solid var(--line);background:var(--surface);border-radius:2px;padding:6px 14px}
+.jump a:hover{border-color:var(--fg)}
+.note-draft{font-size:.85rem;background:var(--lilac);border-radius:4px;padding:10px 14px;color:var(--fg)}
+.cta-band{background:var(--soft)}
+.cta-band .wrap{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between}
+.cta-band h2{font-size:clamp(1.6rem,3vw,2.2rem);max-width:24ch}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><mask id="bl-ap" maskUnits="userSpaceOnUse" x="0" y="0" width="165" height="182"><rect width="165" height="182" fill="#fff"/><rect x="64" y="88" width="30" height="30" fill="#000"/></mask><symbol id="bl-b" viewBox="0 0 165 182"><g mask="url(#bl-ap)" fill="currentColor"><path d="M0 182V20A20 20 0 0 1 20 0H40.67A20 20 0 0 1 60.67 20V182Z"/><path d="M47.67 47.67H126A30 30 0 0 1 156 77.67V108.33H47.67Z"/><path d="M47.67 107.33H164.67V148A34 34 0 0 1 130.67 182H47.67Z"/></g></symbol></defs></svg>
+ 
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="Balance Lab home">
+      <svg width="34" height="38" viewBox="0 0 165 182" aria-hidden="true" style="color:var(--brand)"><use href="#bl-b"/></svg>
+      <b>Balance Lab</b>
+    </a>
+    <ul>
+      <li><a href="/#approach">How we work</a></li>
+      <li><a href="/who-we-work-with/">Who we work with</a></li>
+      <li><a href="#top" aria-current="page">How we use AI</a></li>
+      <li><a href="/#people">The people</a></li>
+    </ul>
+    <a class="btn btn-primary" href="/#contact">Let's talk</a>
+  </div>
+</header>
+<style>
+.stance{padding-block:72px}
+.stance .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.stance .big{font:500 clamp(1.7rem,3.4vw,2.5rem)/1.15 var(--display);letter-spacing:-.015em;text-wrap:balance}
+.stance .big span{color:var(--muted)}
+.stance .body{display:grid;gap:16px;color:var(--muted);font-size:1.08rem}
+.stance .respect{color:var(--fg);font-weight:600;border-left:3px solid var(--accent);padding-left:16px}
+@media (max-width:820px){.stance .wrap{grid-template-columns:1fr;gap:28px}}
+
+.values{background:var(--surface)}
+.values .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.values article{display:grid;gap:10px;align-content:start}
+.values p{color:var(--muted);font-size:.98rem}
+.values .k{font:500 .78rem var(--mono);color:var(--muted)}
+@media (max-width:980px){.values .grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:540px){.values .grid{grid-template-columns:1fr}}
+
+.redlines{background:var(--band);color:var(--band-fg)}
+.redlines .eyebrow{color:color-mix(in srgb,var(--band-fg) 65%,transparent)}
+.redlines .lede{color:color-mix(in srgb,var(--band-fg) 75%,transparent)}
+.rl{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:color-mix(in srgb,var(--band-fg) 18%,transparent);border:1px solid color-mix(in srgb,var(--band-fg) 18%,transparent);border-radius:var(--r);overflow:hidden}
+.rl div{background:var(--band);padding:24px;display:grid;gap:8px;align-content:start}
+.rl b{font:500 1.15rem var(--display);display:flex;gap:10px;align-items:baseline}
+.rl b::before{content:"";flex:none;width:14px;height:14px;border-radius:50%;border:2.5px solid var(--accent);background:linear-gradient(135deg,transparent 44%,var(--accent) 44% 56%,transparent 56%);transform:translateY(1px)}
+.rl p{color:color-mix(in srgb,var(--band-fg) 72%,transparent);font-size:.95rem}
+@media (max-width:900px){.rl{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.rl{grid-template-columns:1fr}}
+
+.commit{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.commit article{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:grid;gap:10px;align-content:start;min-width:0}
+.commit .area{font:500 .75rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.commit p{color:var(--muted);font-size:.95rem}
+.commit .check{font-size:.88rem;color:var(--fg);border-top:1px dashed var(--line);padding-top:10px}
+.commit .check b{font-weight:600}
+@media (max-width:960px){.commit{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.commit{grid-template-columns:1fr}}
+
+.policy{background:var(--soft)}
+.policy .wrap{display:grid;gap:56px}
+.policy .top{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:start}
+.policy .intro{display:grid;gap:18px;min-width:0}
+.policy ol{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:12px;counter-reset:st}
+.policy ol li{background:var(--surface);border-radius:4px;padding:16px 18px;display:grid;gap:4px;align-content:start;min-width:0}
+.policy ol .t{font:500 .75rem var(--mono);color:var(--muted)}
+.policy ol b{font-family:var(--display);font-size:1.02rem}
+.policy ol p{color:var(--muted);font-size:.92rem}
+.policy .bottom{display:grid;gap:16px}
+.policy .bottom-head{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;align-items:baseline}
+.policy .bottom-head p{color:var(--muted);font-size:.9rem}
+.lights{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.light{background:var(--surface);border-radius:var(--r);padding:22px 24px;display:grid;gap:12px;align-content:start;border-left:6px solid var(--c);min-width:0}
+.light h3{font-size:1.15rem;display:flex;align-items:center;gap:10px}
+.light h3::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--c)}
+.light ul{margin:0;padding-left:1.1em;color:var(--muted);font-size:.95rem;display:grid;gap:6px}
+.light.g{--c:var(--green)} .light.a{--c:var(--accent)} .light.r{--c:var(--red)}
+@media (max-width:900px){.policy .top{grid-template-columns:1fr;gap:28px}.lights{grid-template-columns:1fr}}
+@media (max-width:520px){.policy ol{grid-template-columns:1fr}}
+
+.footprint .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:start}
+.footprint .body{display:grid;gap:14px;color:var(--muted)}
+.fpcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:grid;gap:14px}
+.fprow{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:10px;font-variant-numeric:tabular-nums}
+.fprow:last-of-type{border-bottom:none}
+.fprow span{color:var(--muted);font-size:.93rem}
+.fprow b{font-family:var(--mono);font-weight:500;font-size:.92rem}
+.fpcard small{color:var(--muted);font-size:.8rem}
+@media (max-width:860px){.footprint .grid{grid-template-columns:1fr}}
+
+/* Balance Lab brand overrides (Figma brand kit, 10 Nov 2026) */
+
+h1,h2,h3,h4{letter-spacing:-.02em}
+.btn{border-radius:2px}
+.btn:hover{transform:none}
+.btn-primary{background:var(--brand);color:var(--on-brand)}
+.btn-primary:hover{background:color-mix(in srgb,var(--brand) 86%,#000)}
+:focus-visible{outline-color:var(--brand)!important}
+.hero :focus-visible,.problem :focus-visible,.contact :focus-visible,[class*="band"] :focus-visible{outline-color:var(--accent)!important}
+
+</style>
+
+<main id="top">
+<section class="subhero">
+  <div class="wrap">
+    <span class="crumb"><a href="/">Balance Lab</a> / How we use AI</span>
+    <h1>How we use AI, and where we won't</h1>
+    <p class="lede">We help mission-driven organisations use AI to free up time for their mission. This page sets out the rules we hold ourselves to, so you can decide if our way of doing things fits yours.</p>
+    <nav class="jump" aria-label="On this page">
+      <a href="#stance">Our stance</a><a href="#values">What we stand for</a><a href="#redlines">Red lines</a><a href="#commitments">Commitments</a><a href="#your-policy">Your own AI policy</a><a href="#faq">Questions</a>
+    </nav>
+  </div>
+</section>
+
+<section class="stance" id="stance">
+  <div class="wrap">
+    <p class="big">We can't erase all of AI's harmful impact. <span>We can keep it as low as possible.</span></p>
+    <div class="body">
+      <p>The way we work with AI is designed to reduce its harm as far as we can, while still giving mission-driven organisations the chance to do more with their time.</p>
+      <p>Striking that balance, between helping the people making a difference do more and limiting the harm AI causes, is something we navigate every day.</p>
+      <p class="respect">We also fully respect organisations that decide not to use AI at all.</p>
+    </div>
+  </div>
+</section>
+
+<section class="values" id="values">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">What we stand for</span>
+      <h2>Four values behind every build</h2>
+    </div>
+    <div class="grid">
+      <article><span class="k">Jobs</span><h3>Capacity, not cuts</h3><p>We free up time for the work only people can do. We don't take on projects designed to replace your team.</p></article>
+      <article><span class="k">People</span><h3>People decide about people</h3><p>AI can draft, summarise and sort. Decisions about who gets help stay with humans, and anyone talking to an AI can reach a person.</p></article>
+      <article><span class="k">Environment</span><h3>Use only what's needed</h3><p>We pick the smallest tool that does the job, and avoid AI where simpler fixes work.</p></article>
+      <article><span class="k">Independence</span><h3>Yours to keep</h3><p>Your data stays protected, your rules stay written down, and your tools stay portable. We take no fees from AI vendors, so our advice is independent.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="redlines" id="redlines">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Red lines</span>
+      <h2>What we won't build, for anyone</h2>
+      <p class="lede">These are not negotiable, whatever the budget. If a project needs one of them, we'll say no and explain why.</p>
+    </div>
+    <div class="rl">
+      <div><b>Scoring or ranking people</b><p>No tools that decide eligibility, risk, fraud or priority of support. The Dutch childcare benefits scandal showed what that can do to families.</p></div>
+      <div><b>Emotion recognition</b><p>No reading the emotions of staff, volunteers or the people you serve.</p></div>
+      <div><b>Unsupervised crisis support</b><p>No chatbots for mental health, abuse or crisis without a human handover.</p></div>
+      <div><b>Made-up people</b><p>No generated images or stories presented as real people.</p></div>
+      <div><b>Hidden AI</b><p>No tools that talk to people without saying they are AI.</p></div>
+      <div><b>Replacement projects</b><p>No builds where the main goal is cutting jobs.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="commitments">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Commitments</span>
+      <h2>Nine things we do on every project</h2>
+      <p class="lede">Each one comes with a check you can ask to see. We report on them in every results report, alongside the hours saved.</p>
+    </div>
+    <div class="commit">
+      <article><span class="area">Environment</span><h3>Right-size every build</h3><p>The smallest model that does the job. No AI where a rule, template or spreadsheet formula works. No generated images or video unless you ask for them.</p><p class="check"><b>You'll see:</b> the smallest setup that does the job, written down in your handover pack.</p></article>
+      <article><span class="area">Fairness</span><h3>Keep AI out of decisions about people</h3><p>AI drafts, summarises and handles routine questions. Where a build touches people's requests, we test it with a varied sample, in every language you work in, with staff who know the community.</p><p class="check"><b>You'll see:</b> the test sample and what we changed.</p></article>
+      <article><span class="area">Data</span><h3>Data classes before tools</h3><p>In week 1 we sort your data into public, internal, personal and sensitive, and agree which tools may touch each. Personal data only goes into business-tier tools with a data processing agreement and no training on inputs.</p><p class="check"><b>You'll see:</b> a one-page data map, and a flag if you need a data protection impact assessment (DPIA).</p></article>
+      <article><span class="area">Jobs</span><h3>Capacity, not cuts</h3><p>The people who do the work co-design the change. Where a tool could monitor staff, we check whether works council consent is needed.</p><p class="check"><b>You'll see:</b> time saved reported next to what the team will do with it.</p></article>
+      <article><span class="area">Dignity</span><h3>A human route, always</h3><p>Anyone talking to an AI tool is told so and can reach a person. Public-facing tools hand crisis, health and legal questions to staff.</p><p class="check"><b>You'll see:</b> the tested list of topics the tool hands over.</p></article>
+      <article><span class="area">Accuracy</span><h3>A named person signs off</h3><p>Anything that leaves your organisation, such as funder reports, donor messages or translations, has a named reviewer built into the workflow.</p><p class="check"><b>You'll see:</b> whether sign-off still happens, checked at month 3.</p></article>
+      <article><span class="area">Independence</span><h3>Portable builds, no vendor fees</h3><p>We take no referral fees or commissions from AI vendors. Prompts, workflows and data exports are documented so you can switch provider, and we offer European or open-model options.</p><p class="check"><b>You'll see:</b> a handover pack you could give to anyone.</p></article>
+      <article><span class="area">Transparency</span><h3>We say where we used AI</h3><p>If we used AI in our own work for you, for example to draft a report or analyse survey answers, we tell you, and a person on our side checks it.</p><p class="check"><b>You'll see:</b> a note on each deliverable.</p></article>
+      <article><span class="area">Review</span><h3>Harm counts in every verdict</h3><p>Our week 6 and month 3 verdicts of keep, adjust or drop cover harm as well as hours saved. If something isn't safe, we recommend dropping it, even if it saves time.</p><p class="check"><b>You'll see:</b> incidents, complaints and red flags in the results report.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="policy" id="your-policy">
+  <div class="wrap">
+    <div class="top">
+      <div class="intro">
+        <span class="eyebrow">Your own AI policy</span>
+        <h2>We help you write your own rules</h2>
+        <p class="lede">Our rules are a starting point, and your organisation will have its own. Every readiness session includes a short workshop that turns your values into a one-page AI policy. The sprint then finalises it with your team.</p>
+      </div>
+      <ol aria-label="Workshop steps">
+        <li><span class="t">1 · 10 min</span><b>Where are we using it?</b><p>A no-blame round on the tools people already use.</p></li>
+        <li><span class="t">2 · 15 min</span><b>What do we stand for?</b><p>What your values mean for AI, in plain words.</p></li>
+        <li><span class="t">3 · 20 min</span><b>Traffic-light sort</b><p>Real and proposed uses sorted into go, with rules, and not here.</p></li>
+        <li><span class="t">4 · 10 min</span><b>Data classes</b><p>Which tools may touch which data.</p></li>
+        <li><span class="t">5 · 15 min</span><b>Draft the page</b><p>Purpose, rules, sign-off, disclosure and owner on one page.</p></li>
+        <li><span class="t">6 · 5 min</span><b>Owner and review date</b><p>Who owns it, who approves it, and when it's reviewed.</p></li>
+      </ol>
+    </div>
+    <div class="bottom">
+      <div class="bottom-head">
+        <span class="eyebrow">An example sort</span>
+        <p>Adapted from the Data Ethics Decision Aid (DEDA) by Utrecht Data School, a dialogue format widely used in the Netherlands.</p>
+      </div>
+      <div class="lights">
+        <div class="light g"><h3>Go</h3><ul><li>Drafting internal docs and meeting notes</li><li>Summarising public research</li><li>Searching your own policies</li><li>Rewriting text in plain language</li></ul></div>
+        <div class="light a"><h3>With rules</h3><ul><li>Funder reports, with a named reviewer</li><li>Donor emails, disclosed where needed</li><li>Translations, with a native check</li><li>A public FAQ bot, labelled, with a human route</li></ul></div>
+        <div class="light r"><h3>Not here</h3><ul><li>Deciding who gets support</li><li>Case notes in consumer tools</li><li>Generated images of the people you serve</li><li>Crisis conversations without a human</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">Questions we hear</span><h2>About AI and ethics</h2></div>
+    <div class="faq">
+      <details><summary>Will you ever say no?</summary><p>Yes. We won't build tools that score or rank people for support, hide that they are AI, or exist mainly to cut jobs. Sometimes the best fix isn't AI at all, and we'll say so.</p></details>
+      <details><summary>What if we're not sure AI fits who we are?</summary><p>That's a reasonable place to start. We can begin with your red lines and the smallest, lowest-risk use, and "not now" is always an acceptable answer.</p></details>
+      <details><summary>Which AI tools do you use?</summary><p>Whatever fits your data, budget and values, including European and open options. We take no commissions, and everything we build can move with you.</p></details>
+      <details><summary>Our data is sensitive. Can we still work with you?</summary><p>Yes. We start with workflows that don't touch sensitive data, and put rules and contracts in place before anything that does.</p></details>
+      <details><summary>Our donors might not like it.</summary><p>Hidden use is the bigger risk. We help you write a short public AI statement and keep AI away from decisions about people, where public support is lowest.</p></details>
+      <details><summary>Does this cover the EU AI Act?</summary><p>Our training helps you meet the AI literacy duty for staff, and our rules on telling people when they talk to AI match the Act's transparency duties. We're not lawyers, and we'll tell you when you need one.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <div class="wrap">
+    <h2>Want to talk through what AI should and shouldn't do in your organisation?</h2>
+    <a class="btn btn-primary" href="/#contact">Book a free intro talk</a>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <a class="logo" href="/"><svg width="26" height="29" viewBox="0 0 165 182" aria-hidden="true" style="color:var(--brand)"><use href="#bl-b"/></svg><b style="font-size:1rem">Balance Lab</b></a>
+    <span>Amsterdam · AI implementation for mission-driven organisations</span>
+  </div>
+</footer>
+
+
+</body>
+</html>
