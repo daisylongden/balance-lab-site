@@ -284,8 +284,7 @@ body{margin:0}
 .join .text{display:grid;gap:16px}
 .join .ctas{display:flex;flex-wrap:wrap;gap:12px}
 .join .alt{font-size:.92rem;color:var(--muted)}
-.join .luma{grid-column:1/-1;display:grid;gap:8px;max-width:680px}
-.join .luma iframe{width:100%;height:480px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+.btn.soon{cursor:default;opacity:.75}.btn.soon:hover{transform:none}
 .endorse{display:grid;gap:10px;justify-self:start;border-left:3px solid var(--sage);padding-left:20px}
 .endorse .bl{display:flex;align-items:center;gap:10px;text-decoration:none}
 .endorse .bl b{font:500 1.35rem var(--display);letter-spacing:-.02em}
@@ -407,7 +406,7 @@ body{margin:0}
   <div class="wrap">
     <div class="head"><span class="eyebrow">2027</span><h2 id="sessions">The first three tables</h2><p class="lede">Third Friday of the month. Each theme is a lens for your own challenges, not a lecture. Themes stay flexible and will be shaped in part by what the community wants to tackle. Come to the ones that fit. You're part of the group either way.</p></div>
     <ol>
-      <li><time datetime="2027-01-15">Fri 15 Jan</time><b>Where does the time go?</b><a class="btn btn-primary reg" href="https://luma.com/t0djinja" target="_blank" rel="noopener" aria-label="Register for 15 January: Where does the time go?">Register</a></li>
+      <li><time datetime="2027-01-15">Fri 15 Jan</time><b>Where does the time go?</b><span class="btn btn-primary reg soon" aria-disabled="true">Registration opens soon</span></li>
       <li><time datetime="2027-03-19">Fri 19 Mar</time><b>What are you already trying?</b></li>
       <li><time datetime="2027-04-16">Fri 16 Apr</time><b>Where does AI fit?</b></li>
     </ol>
@@ -434,9 +433,9 @@ body{margin:0}
     <div class="text">
       <span class="eyebrow">Find your seat</span>
       <h2 id="joinh">Join the table</h2>
-      <p class="lede">Sign up below for the first table on Fri 15 January. You'll get the venue and a calendar invite once your seat is confirmed.</p>
+      <p class="lede">Registration for the first table on Fri 15 January opens soon. Once your seat is confirmed, you'll get the venue and a calendar invite.</p>
       <div class="ctas">
-        <a class="btn btn-primary" href="https://luma.com/t0djinja" target="_blank" rel="noopener">Register for 15 January</a>
+        <span class="btn btn-primary soon" aria-disabled="true">Registration opens soon</span>
       </div>
       <p class="alt">Questions first? Email <a href="mailto:hello@balance-lab.nl?subject=The%20Ops%20Table">hello@balance-lab.nl</a>.</p>
     </div>
@@ -444,10 +443,6 @@ body{margin:0}
       <span class="eyebrow">An initiative from</span>
       <a class="bl" href="/"><svg width="30" height="33" viewBox="0 0 165 182" aria-hidden="true" style="color:var(--brand)"><use href="#bl-b"/></svg><b>Balance Lab</b></a>
       <p>Hosted by Daisy Longden, founder of Balance Lab, an AI implementation studio that helps mission-driven teams win back capacity.</p>
-    </div>
-    <div class="luma">
-      <iframe src="https://luma.com/embed/event/evt-bG8ku5OyrVFCnhA/simple" title="Sign up for The Ops Table on Luma" loading="lazy" allow="fullscreen; payment"></iframe>
-      <p class="alt">Form not loading? <a href="https://luma.com/t0djinja">Open the sign-up page on Luma</a>.</p>
     </div>
   </div>
 </section>
