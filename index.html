@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://balance-lab.nl/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500&family=Inter:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,700&family=Inter:wght@400;500&display=swap">
 <style>
 /* Balance Lab brand (Figma brand kit, 10 Nov 2026): plum anchor, peach accent shapes, paper and blush grounds,
    DM Sans Medium headings, Inter body, square-cornered buttons, modular "b" shapes (pillar, upper lobe, lower lobe). */
@@ -185,6 +185,12 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .founder .role{font:500 .78rem var(--body);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);display:block;margin-top:4px}
 .founder blockquote{margin:0;font:500 clamp(1.1rem,1.6vw,1.3rem)/1.55 var(--display);letter-spacing:-.01em;color:var(--fg)}
 @media (max-width:760px){.founder{grid-template-columns:1fr;gap:24px;padding:24px}.founder .who img{width:120px;height:120px}}
+.founder blockquote strong{font-weight:700;color:var(--heading)}
+.founder .typed .c{visibility:hidden}
+.founder .typed .c.on{visibility:visible}
+.founder .caret{display:inline-block;width:2px;height:1.1em;margin-left:1px;vertical-align:-.15em;background:var(--heading);animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .person{display:grid;grid-template-columns:120px 1fr;gap:24px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px}
 .avatar{width:120px;height:120px;border-radius:var(--r);display:grid;place-items:center;font:500 2.2rem var(--display);object-fit:cover}
 .person .role{font:500 .78rem var(--body);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
@@ -417,7 +423,7 @@ footer .line{font:500 1rem var(--display);color:var(--heading)}
     <div class="grid">
       <figure class="founder">
         <figcaption class="who"><img src="/assets/daisy.jpg" loading="lazy" alt="Daisy"><h3>Daisy</h3><span class="role">Founder</span></figcaption>
-        <blockquote><p>&ldquo;I started Balance Lab after seeing a lot of organisations struggle to navigate if and how to integrate AI. AI not only clashes with many of their values, but taking the time to step back and implement considered and consistent AI processes will almost always be de-prioritised in favour of urgent, time-sensitive work. The result? These organisations lose out on optimisations that could leave more time for the work that matters, and scattered AI practices risk damaging their core values.&rdquo;</p></blockquote>
+        <blockquote><p>&ldquo;I started Balance Lab after seeing a lot of organisations struggle to navigate <strong>if and how to integrate AI</strong>. AI not only <strong>clashes with many of their values</strong>, but taking the time to step back and implement considered and consistent AI processes will almost always be <strong>de-prioritised in favour of urgent, time-sensitive work</strong>. The result? These organisations <strong>lose out on optimisations</strong> that could leave more time for the work that matters, and scattered AI practices <strong>risk damaging their core values</strong>.&rdquo;</p></blockquote>
       </figure>
     </div>
   </div>
@@ -493,5 +499,25 @@ footer .line{font:500 1rem var(--display);color:var(--heading)}
 
 <!-- Cloudflare Web Analytics: counts visits without cookies or storing personal data -->
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "c2c115402fb84db2a22f14c6d2e56ae2"}'></script>
+<script>
+/* Founder quote: types itself in once it scrolls into view. Screen readers get the full text straight away. */
+(function(){
+  var q=document.querySelector('.founder blockquote p');
+  if(!q||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var t=q.cloneNode(true);t.classList.add('typed');t.setAttribute('aria-hidden','true');
+  q.classList.add('sr-only');q.after(t);
+  var chars=[];
+  (function wrap(n){[].slice.call(n.childNodes).forEach(function(k){
+    if(k.nodeType===3){var f=document.createDocumentFragment();
+      k.textContent.split('').forEach(function(ch){var s=document.createElement('span');s.className='c';s.textContent=ch;f.appendChild(s);chars.push(s);});
+      k.replaceWith(f);}else wrap(k);});})(t);
+  var caret=document.createElement('span');caret.className='caret';
+  var io=new IntersectionObserver(function(es){if(!es[0].isIntersecting)return;io.disconnect();
+    var i=0;(function step(){for(var n=0;n<3&&i<chars.length;n++,i++){chars[i].classList.add('on');}
+      if(i<chars.length){chars[i-1].after(caret);setTimeout(step,28);}else{setTimeout(function(){caret.remove();},2400);}})();
+  },{threshold:.5});
+  io.observe(t);
+})();
+</script>
 </body>
 </html>
