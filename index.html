@@ -446,6 +446,7 @@ footer .line{font:500 1rem var(--display);color:var(--heading)}
       <label for="cEmail">Email<input id="cEmail" name="email" type="email" autocomplete="email"></label>
       <label for="cMsg">What takes up too much of your team's time?<textarea id="cMsg" name="msg" rows="3"></textarea></label>
       <button class="btn btn-primary" type="submit">Request an intro talk</button>
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
       <p class="formnote" id="formNote" aria-live="polite"></p>
     </form>
   </div>
@@ -461,13 +462,25 @@ footer .line{font:500 1rem var(--display);color:var(--heading)}
 </footer>
 
 <script>
-document.getElementById('contactForm').addEventListener('submit',function(e){
-  e.preventDefault();
-  var f=e.target, v=function(n){return (f.elements[n].value||'').trim()};
-  var body='Name: '+v('name')+'\nOrganisation: '+v('org')+'\nEmail: '+v('email')+'\n\n'+v('msg');
-  window.location.href='mailto:hello@balance-lab.nl?subject='+encodeURIComponent('Intro talk request'+(v('org')?' from '+v('org'):''))+'&body='+encodeURIComponent(body);
-  document.getElementById('formNote').textContent='Your email app should open with your message. If not, write to hello@balance-lab.nl.';
-});
+// Contact form: posts to FormSubmit, which emails each request to hello@balance-lab.nl.
+(function(){
+  var f=document.getElementById('contactForm'), note=document.getElementById('formNote'), btn=f.querySelector('button[type=submit]');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var v=function(n){return (f.elements[n].value||'').trim()};
+    if(f.elements._honey.value) return;
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v('email'))){note.textContent='Please add your email so we can reply.';f.elements.email.focus();return}
+    if(!v('msg')){note.textContent='Please tell us a little about what takes up your team\'s time.';f.elements.msg.focus();return}
+    btn.disabled=true; note.textContent='Sending…';
+    fetch('https://formsubmit.co/ajax/hello@balance-lab.nl',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({name:v('name'),organisation:v('org'),email:v('email'),message:v('msg'),
+        _subject:'Intro talk request'+(v('org')?' from '+v('org'):''),_replyto:v('email'),_template:'table',_captcha:'false'})})
+    .then(function(r){return r.json().then(function(d){if(!r.ok||String(d.success)!=='true')throw 0})})
+    .then(function(){f.reset();note.textContent='Thank you. Your message is on its way, and we\'ll get back to you soon.'})
+    .catch(function(){note.textContent='Sorry, that didn\'t send. Please email us at hello@balance-lab.nl.'})
+    .then(function(){btn.disabled=false});
+  });
+})();
 </script>
 
 
