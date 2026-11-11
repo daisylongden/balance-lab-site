@@ -89,10 +89,10 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .heropanel svg{width:64%;height:auto;color:var(--heading)}
 @media (max-width:860px){.hero .wrap{grid-template-columns:1fr}.heropanel{justify-self:start;max-width:420px;aspect-ratio:5/4}.heropanel svg{width:40%}}
 /* Logo assembly motion, from Figma "Balance Lab - Logo Motion" (frame 10:161).
-   5s loop; offsets are the Figma px values scaled to this 165-unit viewBox (x0.475). */
+   Plays once; offsets are the Figma px values scaled to this 165-unit viewBox (x0.475). */
 .heropanel svg{overflow:visible}
 @media (prefers-reduced-motion:no-preference){
-  .heropanel .m{animation:5s linear infinite}
+  .heropanel .m{animation:5s linear both}
   .heropanel .m1{animation-name:bl-pillar}
   .heropanel .m2{animation-name:bl-upper}
   .heropanel .m3{animation-name:bl-lower}
