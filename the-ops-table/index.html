@@ -276,11 +276,12 @@ body{margin:0}
 .sessions{background:var(--band);color:var(--band-fg)}
 .sessions .eyebrow,.sessions .lede{color:color-mix(in srgb,var(--band-fg) 72%,transparent)}
 .sessions ol{list-style:none;margin:0;padding:0;border-top:1px solid color-mix(in srgb,var(--band-fg) 22%,transparent)}
-.sessions li{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid color-mix(in srgb,var(--band-fg) 22%,transparent);align-items:baseline}
+.sessions li{display:grid;grid-template-columns:150px 1fr auto;gap:16px;padding:18px 0;border-bottom:1px solid color-mix(in srgb,var(--band-fg) 22%,transparent);align-items:baseline}
 .sessions time{font:500 .85rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
 .sessions li b{font:500 clamp(1.2rem,2.4vw,1.6rem)/1.2 var(--display);letter-spacing:-.01em}
 .sessions .after{margin-top:20px;color:color-mix(in srgb,var(--band-fg) 72%,transparent);font-size:.95rem}
-@media (max-width:560px){.sessions li{grid-template-columns:1fr;gap:4px}}
+.sessions .reg{padding:.55em 1.1em;font-size:.92rem;align-self:center}
+@media (max-width:560px){.sessions li{grid-template-columns:1fr;gap:4px}.sessions .reg{justify-self:start;margin-top:8px}}
 
 .join .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
 .join .text{display:grid;gap:16px}
@@ -425,7 +426,7 @@ body{margin:0}
   <div class="wrap">
     <div class="head"><span class="eyebrow">2027</span><h2 id="sessions">The first three tables</h2><p class="lede">Third Friday of the month. Each theme is a lens for your own challenges, not a lecture. Themes stay flexible and will be shaped in part by what the community wants to tackle. Come to the ones that fit. You're part of the group either way.</p></div>
     <ol>
-      <li><time datetime="2027-01-15">Fri 15 Jan</time><b>Where does the time go?</b></li>
+      <li><time datetime="2027-01-15">Fri 15 Jan</time><b>Where does the time go?</b><a class="btn btn-primary reg" href="https://luma.com/t0djinja" target="_blank" rel="noopener" aria-label="Register for 15 January: Where does the time go?">Register</a></li>
       <li><time datetime="2027-03-19">Fri 19 Mar</time><b>What are you already trying?</b></li>
       <li><time datetime="2027-04-16">Fri 16 Apr</time><b>Where does AI fit?</b></li>
     </ol>
