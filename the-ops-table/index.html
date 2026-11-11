@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>The Ops Table · Balance Lab</title>
-<meta name="description" content="The Ops Table is a free monthly breakfast roundtable in Amsterdam for ops, finance and people leads in mission-driven work. An initiative from Balance Lab.">
+<meta name="description" content="The Ops Table is a free Amsterdam community for ops, finance and people leads in mission-driven work. We meet monthly and keep sharing ideas in between. An initiative from Balance Lab.">
 <link rel="canonical" href="https://balance-lab.nl/the-ops-table/">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Balance Lab">
 <meta property="og:title" content="The Ops Table · Balance Lab">
-<meta property="og:description" content="The Ops Table is a free monthly breakfast roundtable in Amsterdam for ops, finance and people leads in mission-driven work. An initiative from Balance Lab.">
+<meta property="og:description" content="The Ops Table is a free Amsterdam community for ops, finance and people leads in mission-driven work. We meet monthly and keep sharing ideas in between. An initiative from Balance Lab.">
 <meta property="og:url" content="https://balance-lab.nl/the-ops-table/">
 <meta property="og:image" content="https://balance-lab.nl/the-ops-table/ops-table-share.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -255,6 +255,13 @@ body{margin:0}
 @media (max-width:1000px){.gets{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:520px){.gets{grid-template-columns:1fr}}
 
+.rhythm{padding-top:0}
+.loop{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--brand)}
+.loop li{padding:20px 28px 0 0;display:grid;gap:8px;align-content:start;position:relative}
+.loop li::before{content:"";position:absolute;top:-9px;left:0;width:16px;height:16px;border-radius:4px;background:var(--sage)}
+.loop .n{font:500 .8rem var(--mono);color:var(--muted);margin-top:6px}
+.loop p{color:var(--muted)}
+@media (max-width:760px){.loop{grid-template-columns:1fr;border-top:0;border-left:2px solid var(--brand);gap:20px}.loop li{padding:0 0 0 24px}.loop li::before{top:4px;left:-9px}.loop .n{margin-top:0}}
 .kit{background:var(--soft)}
 .kit .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .kit article{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px;display:grid;gap:10px;align-content:start}
@@ -309,11 +316,11 @@ body{margin:0}
   <div class="wrap">
     <div class="text">
       <div class="ot-logo"><svg width="36" height="36" aria-hidden="true"><use href="#ot"/></svg><b>The Ops Table</b></div>
-      <span class="eyebrow">A monthly breakfast roundtable · Amsterdam</span>
+      <span class="eyebrow">A community for ops leaders in mission-driven work · Amsterdam</span>
       <h1 id="title">Bring the problem that eats your week.</h1>
-      <p class="sub">A small breakfast for people who keep mission-driven work running. Ten organisations around one table, talking honestly about where the time goes, and leaving with something real to try.</p>
+      <p class="sub">A community for the people who keep mission-driven work running. Once a month we meet around one table to talk honestly about where the time goes. In between, the conversation keeps going: questions, ideas and wins, shared so they reach further.</p>
       <p class="ai"><b>Win back capacity for the team you have, including where AI can help, and where it should stay out of your processes.</b> Hosted by an AI implementation studio.</p>
-      <ul class="facts" aria-label="Key facts"><li>Free</li><li>2 hours, once a month</li><li>~10 organisations</li><li>Max 2 per org</li><li>No pitch</li><li>Come once, decide later</li></ul>
+      <ul class="facts" aria-label="Key facts"><li>Free</li><li>A breakfast table each month</li><li>A group between tables</li><li>~10 organisations per table</li><li>Max 2 per org</li><li>No pitch</li></ul>
       <div class="ctas">
         <a class="btn btn-primary" href="#join">Find your seat</a>
       </div>
@@ -335,7 +342,7 @@ body{margin:0}
       <p>In each one, the fixes that would win back the most time kept getting pushed aside by whatever was urgent that week. Everyone agreed things should change. Making room for the change was the hard part.</p>
       <p>In a small team you're often the only one pushing. So every new process becomes its own project: bringing colleagues along, one conversation at a time.</p>
       <p class="big">Because the problems are so alike, the answers travel well.</p>
-      <p>Our sector asks the people we serve to work together to make change happen. The Ops Table does the same for the people who run our organisations. We share what's working, what isn't, and the wins worth copying, so nobody has to start from scratch.</p>
+      <p>Our sector asks the people we serve to work together to make change happen. The Ops Table does the same for the people who run our organisations. We share what's working, what isn't, and the wins worth copying, so nobody has to start from scratch. And it doesn't stop when breakfast ends.</p>
     </div>
   </div>
 </section>
@@ -344,9 +351,10 @@ body{margin:0}
   <div class="wrap two">
     <div class="col">
       <span class="eyebrow">What it is</span>
-      <h2 id="what">A peer table, not an event</h2>
-      <p>Each month you bring your own pain points and work through them with a group of fellow ops leaders. A simple framework helps you see your challenges in new ways and learn from how other organisations have tackled theirs.</p>
-      <p><b>The goal?</b> Get inspired and leave with a plan you can take back on Monday.</p>
+      <h2 id="what">A community, not a one-off event</h2>
+      <p>Each month you bring your own pain points and work through them with fellow ops leaders. A simple framework helps you see your challenges in new ways and learn from how other organisations have tackled theirs.</p>
+      <p>Then it carries on. You can test an idea on the group, ask who has solved something before, and share what worked, so the next team doesn't start from scratch.</p>
+      <p><b>The goal?</b> Leave each table with a plan for Monday, and a group behind you while you make it happen.</p>
     </div>
     <div class="col">
       <span class="eyebrow">Who it's for</span>
@@ -366,8 +374,19 @@ body{margin:0}
       <li><span class="n">01</span><h3>Peers with the same problems</h3><p>Everyone around you is juggling reporting, tools and people too.</p></li>
       <li><span class="n">02</span><h3>Ideas tested elsewhere</h3><p>What others tried, AI included, and what quietly failed.</p></li>
       <li><span class="n">03</span><h3>A plan to take back</h3><p>Leave with one concrete thing to try next month.</p></li>
-      <li><span class="n">04</span><h3>A group to keep it going</h3><p>An optional WhatsApp group between tables.</p></li>
+      <li><span class="n">04</span><h3>Support between tables</h3><p>A group to ask a question, test an idea or share a win, any day of the month.</p></li>
     </ul>
+  </div>
+</section>
+
+<section class="rhythm" aria-labelledby="rhythm">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">How the community works</span><h2 id="rhythm">A table once a month, a community all month</h2></div>
+    <ol class="loop">
+      <li><span class="n">01</span><h3>At the table</h3><p>Once a month, around 10 organisations bring real problems and work through them together.</p></li>
+      <li><span class="n">02</span><h3>Between tables</h3><p>The group stays open. Ask a question, test an idea, report back on what you tried.</p></li>
+      <li><span class="n">03</span><h3>Shared further</h3><p>With your permission, we share members' ideas and wins in our recaps, so good work reaches more teams.</p></li>
+    </ol>
   </div>
 </section>
 
@@ -401,7 +420,7 @@ body{margin:0}
 
 <section class="sessions" aria-labelledby="sessions">
   <div class="wrap">
-    <div class="head"><span class="eyebrow">2027</span><h2 id="sessions">The first five sessions</h2><p class="lede">Third Friday of the month, no session in February. Each theme is a lens for your own problems, not a lecture.</p></div>
+    <div class="head"><span class="eyebrow">2027</span><h2 id="sessions">The first five tables</h2><p class="lede">Third Friday of the month, no table in February. Each theme is a lens for your own problems, not a lecture. Come to the ones that fit. You're part of the group either way.</p></div>
     <ol>
       <li><time datetime="2027-01-15">Fri 15 Jan</time><b>Where does the time go?</b></li>
       <li><time datetime="2027-03-19">Fri 19 Mar</time><b>What are you already trying?</b></li>
@@ -421,7 +440,8 @@ body{margin:0}
       <details><summary>Will you try to sell me something?</summary><p>No. There's no pitch in the room or in the WhatsApp group. If you'd like to talk about your own work afterwards, you can ask for a free intro call.</p></details>
       <details><summary>Do I need to know about AI?</summary><p>No. We start with your problems. AI comes up where it might help, and we're just as honest about where it shouldn't.</p></details>
       <details><summary>Can I bring a colleague?</summary><p>Yes, up to 2 people per organisation, so there's room for about 10 organisations.</p></details>
-      <details><summary>Do I have to come every month?</summary><p>No. Come once and decide later. Each session works on its own.</p></details>
+      <details><summary>Do I have to come every month?</summary><p>No. Come when it suits you. Each table works on its own, and you stay part of the group in between.</p></details>
+      <details><summary>What happens between tables?</summary><p>The group stays open. Members ask questions, share drafts and report back on what they tried. With your permission, we share the ideas and wins in our recaps, so good work gets seen by more teams.</p></details>
     </div>
   </div>
 </section>
@@ -430,8 +450,8 @@ body{margin:0}
   <div class="wrap">
     <div class="text">
       <span class="eyebrow">Find your seat</span>
-      <h2 id="joinh">Save a seat at the next table</h2>
-      <p class="lede">Send us a short email with your name, organisation and role. We'll confirm your seat and the venue.</p>
+      <h2 id="joinh">Join the table</h2>
+      <p class="lede">Send us a short email with your name, organisation and role. We'll save you a seat at the next table, share the venue and, if you'd like, add you to the group.</p>
       <div class="ctas">
         <a class="btn btn-primary" href="mailto:hello@balance-lab.nl?subject=A%20seat%20at%20The%20Ops%20Table">Email hello@balance-lab.nl</a>
       </div>
