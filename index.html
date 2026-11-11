@@ -78,17 +78,16 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 @media (max-width:460px){.nav .btn{padding:.65em 1.1em;font-size:.92rem}}
 
 /* Hero */
-.hero{padding-block:72px 96px;background:var(--panel)}
+.hero{padding-block:72px 96px;background:var(--panel);overflow:clip}
 .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
 .hero .text{display:grid;gap:24px;min-width:0}
 .hero h1 em{font-style:normal;background:linear-gradient(transparent 64%,var(--accent) 64% 90%,transparent 90%);color:var(--heading)}
 .hero .lede{color:var(--fg)}
 .hero .ctas{display:flex;flex-wrap:wrap;gap:12px}
 .hero .small{font-size:.92rem;color:var(--muted)}
-.heropanel{position:relative;background:#642C40;color:#FFFCF8;aspect-ratio:4/5;width:100%;max-width:440px;justify-self:end;overflow:hidden;display:flex;align-items:flex-end;padding:32px}
-.heropanel svg{position:absolute;right:14%;top:12%;width:56%;height:auto;color:#F5A57F}
-.heropanel p{position:relative;font:500 clamp(1.5rem,2.6vw,2rem)/1.2 var(--display);letter-spacing:-.02em;max-width:9ch}
-@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}.heropanel{justify-self:start;max-width:420px;aspect-ratio:5/4}.heropanel svg{width:38%;top:12%;right:12%}}
+.heropanel{position:relative;aspect-ratio:4/5;width:100%;max-width:440px;justify-self:end;display:grid;place-items:center}
+.heropanel svg{width:64%;height:auto;color:var(--heading)}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}.heropanel{justify-self:start;max-width:420px;aspect-ratio:5/4}.heropanel svg{width:40%}}
 /* Logo assembly motion, from Figma "Balance Lab - Logo Motion" (frame 10:161).
    5s loop; offsets are the Figma px values scaled to this 165-unit viewBox (x0.475). */
 .heropanel svg{overflow:visible}
@@ -257,9 +256,8 @@ footer .line{font:500 1rem var(--display);color:var(--heading)}
       <p class="small">Working with charities, foundations and social enterprises.</p>
     </div>
 
-    <figure class="heropanel" style="margin:0" aria-label="AI where it helps.">
+    <figure class="heropanel" style="margin:0" aria-hidden="true">
       <svg viewBox="0 0 165 182" aria-hidden="true"><g fill="currentColor"><path class="m m1" d="M0 182V20A20 20 0 0 1 20 0H40.67A20 20 0 0 1 60.67 20V182Z"/><path class="m m2" mask="url(#bl-ap)" d="M47.67 47.67H126A30 30 0 0 1 156 77.67V108.33H47.67Z"/><path class="m m3" mask="url(#bl-ap)" d="M47.67 107.33H164.67V148A34 34 0 0 1 130.67 182H47.67Z"/></g></svg>
-      <p>AI where it helps.</p>
     </figure>
   </div>
 </section>
