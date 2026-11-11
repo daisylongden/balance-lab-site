@@ -179,7 +179,13 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 
 /* People */
 .people{background:var(--panel)}
-.people .grid{display:grid;grid-template-columns:1fr;gap:24px;max-width:640px}
+.people .grid{display:grid;grid-template-columns:1fr;gap:24px;max-width:960px}
+.founder{display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:start;margin:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:40px}
+.founder .who img{width:200px;height:200px;border-radius:var(--r);object-fit:cover;display:block}
+.founder .who h3{margin-top:16px}
+.founder .role{font:500 .78rem var(--body);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);display:block;margin-top:4px}
+.founder blockquote{margin:0;font:500 clamp(1.1rem,1.6vw,1.3rem)/1.55 var(--display);letter-spacing:-.01em;color:var(--fg)}
+@media (max-width:760px){.founder{grid-template-columns:1fr;gap:24px;padding:24px}.founder .who img{width:120px;height:120px}}
 .person{display:grid;grid-template-columns:120px 1fr;gap:24px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px}
 .avatar{width:120px;height:120px;border-radius:var(--r);display:grid;place-items:center;font:500 2.2rem var(--display);object-fit:cover}
 .person .role{font:500 .78rem var(--body);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
@@ -411,10 +417,10 @@ footer .line{font:500 1rem var(--display);color:var(--heading)}
       <p class="lede">Based in Amsterdam, working with organisations across the Netherlands.</p>
     </div>
     <div class="grid">
-      <article class="person">
-        <img class="avatar" src="/assets/daisy.jpg" width="120" height="120" loading="lazy" alt="Daisy" width="120" height="120" style="object-fit:cover">
-        <div><span class="role">Founder</span><h3>Daisy</h3><p>A background in building products, processes and businesses across tech and impact. Daisy leads each engagement, from the first conversation to the results report.</p></div>
-      </article>
+      <figure class="founder">
+        <figcaption class="who"><img src="/assets/daisy.jpg" loading="lazy" alt="Daisy"><h3>Daisy</h3><span class="role">Founder</span></figcaption>
+        <blockquote><p>&ldquo;I started Balance Lab after seeing a lot of organisations struggle to navigate if and how to integrate AI. AI not only clashes with many of their values, but taking the time to step back and implement considered and consistent AI processes will almost always be de-prioritised in favour of urgent, time-sensitive work. The result? These organisations lose out on optimisations that could leave more time for the work that matters, and scattered AI practices risk damaging their core values.&rdquo;</p></blockquote>
+      </figure>
     </div>
   </div>
 </section>
