@@ -150,13 +150,12 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 /* Sprint timeline */
 .timeline{overflow-x:auto;margin-top:8px}
 .tl{display:grid;grid-template-columns:repeat(7,minmax(120px,1fr));min-width:840px;border-top:2px solid var(--heading)}
-.tl div{padding:16px 14px 0 0;display:grid;gap:6px;align-content:start}
+.tl div{padding:24px 14px 0 0;display:grid;gap:6px;align-content:start}
 .tl .wk{font:500 .8rem var(--body);letter-spacing:.04em;color:var(--muted)}
 .tl b{font:500 1.05rem/1.25 var(--display);color:var(--heading)}
 .tl p{font-size:.9rem;color:var(--muted)}
 .tl .m{position:relative}
 .tl .m::before{content:"";position:absolute;top:-9px;left:0;width:16px;height:16px;background:var(--accent);border-radius:0 8px 0 0}
-.tl .m .wk{margin-top:10px}
 .roi{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .roi div{border-left:4px solid var(--accent);padding:4px 0 4px 16px;display:grid;gap:4px}
 .roi b{font:500 1.15rem var(--display);color:var(--heading)}
