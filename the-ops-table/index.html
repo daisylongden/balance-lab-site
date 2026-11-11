@@ -263,15 +263,12 @@ body{margin:0}
 .loop p{color:var(--muted)}
 @media (max-width:760px){.loop{grid-template-columns:1fr;border-top:0;border-left:2px solid var(--brand);gap:20px}.loop li{padding:0 0 0 24px}.loop li::before{top:4px;left:-9px}.loop .n{margin-top:0}}
 .kit{background:var(--soft)}
-.kit .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.kit article{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px;display:grid;gap:10px;align-content:start}
-.kit article .eyebrow{font-size:.72rem}
-.kit article p{color:var(--muted);font-size:.96rem}
-.kit q{display:block;font:500 1.05rem/1.35 var(--display);color:var(--fg);quotes:"\201C" "\201D"}
-.rules{list-style:none;margin:0;padding:0;display:grid;gap:8px;counter-reset:r}
-.rules li{display:grid;grid-template-columns:28px 1fr;gap:6px;font-size:.96rem}
-.rules li::before{counter-increment:r;content:"0" counter(r);font:500 .8rem/1.9 var(--mono);color:var(--muted)}
-@media (max-width:900px){.kit .grid{grid-template-columns:1fr}}
+.rules{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:16px;counter-reset:r}
+.rules li{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:grid;gap:10px;align-content:start;color:var(--muted);font-size:.96rem}
+.rules li::before{counter-increment:r;content:"0" counter(r);font:500 .8rem var(--mono);color:var(--muted)}
+.rules b{display:block;font:500 1.15rem/1.25 var(--display);color:var(--fg);letter-spacing:-.005em}
+@media (max-width:1000px){.rules{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.rules{grid-template-columns:1fr}}
 
 .sessions{background:var(--band);color:var(--band-fg)}
 .sessions .eyebrow,.sessions .lede{color:color-mix(in srgb,var(--band-fg) 72%,transparent)}
@@ -396,29 +393,14 @@ body{margin:0}
 
 <section class="kit" aria-labelledby="kit">
   <div class="wrap">
-    <div class="head"><span class="eyebrow">On the day</span><h2 id="kit">What's waiting at the table</h2><p class="lede">Everything is there so the 2 hours go on your problems, not on admin.</p></div>
-    <div class="grid">
-      <article>
-        <span class="eyebrow">Name badge</span>
-        <h3>Your name and your biggest time drain</h3>
-        <p>Write both on a badge as you arrive. It starts the right conversations over coffee, before we even sit down.</p>
-      </article>
-      <article>
-        <span class="eyebrow">Prompt cards</span>
-        <q>What did you do last week that you hope you never do again?</q>
-        <p>A few prompts on each table. Two minutes each, others ask one question, no advice yet.</p>
-      </article>
-      <article>
-        <span class="eyebrow">How the table works</span>
-        <ol class="rules">
-          <li>What's said here stays here. Share ideas, not names.</li>
-          <li>Real problems over polished answers.</li>
-          <li>Ask before you advise.</li>
-          <li>No selling, from anyone.</li>
-          <li>Leave with one thing to try.</li>
-        </ol>
-      </article>
-    </div>
+    <div class="head"><span class="eyebrow">How the table works</span><h2 id="kit">Five things that stay the same</h2><p class="lede">The format may change from table to table as we try new ideas. These ground rules don't.</p></div>
+    <ol class="rules">
+      <li><b>What's said here stays here.</b> Share ideas, not names.</li>
+      <li><b>Real problems over polished answers.</b></li>
+      <li><b>Ask before you advise.</b></li>
+      <li><b>No selling, from anyone.</b></li>
+      <li><b>Leave with one thing to try.</b></li>
+    </ol>
   </div>
 </section>
 
