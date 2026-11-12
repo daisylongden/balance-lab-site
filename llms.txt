@@ -1,0 +1,19 @@
+# Balance Lab
+
+> Balance Lab helps mission-driven organisations in the Netherlands (charities, foundations, social enterprises and other non-profits) use AI where it genuinely helps, and keep the know-how in-house. Based in Amsterdam. Founded by Daisy Longden. Contact: hello@balance-lab.nl
+
+We start by finding where your team's time goes, then build one AI tool with the people who do the work, measure the result against a baseline, and train an internal lead to run it. We will also tell you when AI is not the right answer.
+
+How we work:
+- Intro talk: free, 30 minutes, online.
+- Readiness session: half a day with your team, €950, fully credited if you book a sprint.
+- Implementation sprint: six weeks, fixed scope, €7,500. A custom AI tool for one workflow, a trained internal AI lead, AI use guidelines and a results report, plus a 3-month health check.
+- Ongoing support: as needed, billed hourly, no lock-in.
+- Add-on: help shaping a grant application to fund a sprint.
+
+## Pages
+
+- [Home](https://balance-lab.nl/): what Balance Lab does, the process, prices and FAQ
+- [Who we work with](https://balance-lab.nl/who-we-work-with/): the mission-driven organisations we work with and the pressures they share
+- [How we use AI](https://balance-lab.nl/how-we-use-ai/): our values, red lines and the commitments we keep on every project
+- [The Ops Table](https://balance-lab.nl/the-ops-table/): a free monthly community in Amsterdam for ops, finance and people leads in mission-driven work
