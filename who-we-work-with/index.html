@@ -266,6 +266,21 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-bet
 .d3{background:var(--fg)} .d2{background:color-mix(in srgb,var(--fg) 35%,transparent)} .d1{border:1.5px solid var(--line)}
 .legend{display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem;color:var(--muted);margin-top:12px}
 .legend span{display:inline-flex;gap:6px;align-items:center}
+/* Phones: one card per area instead of a wide table */
+@media (max-width:640px){
+  .glance .tablewrap{overflow:visible;background:none;border:0}
+  .glance table,.glance tbody,.glance tr,.glance td{display:block;min-width:0}
+  .glance thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .glance tr{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:12px}
+  .glance td{display:flex;align-items:center;gap:10px;padding:6px 0;border:0;text-align:left;font-size:.92rem}
+  .glance td::before{content:attr(data-label);order:2;color:var(--fg)}
+  .glance td:first-child{display:block;padding:0 0 10px;margin-bottom:4px;border-bottom:1px solid var(--line);font-size:1.05rem}
+  .glance td:first-child::before{content:none}
+  .glance td .dot{flex:none;order:1}
+  .glance .wrap{display:flex;flex-direction:column}
+  .glance .tablewrap{order:2}
+  .glance .legend{order:1;margin:0 0 16px}
+}
 
 .pillars{display:grid;gap:20px}
 .pillar{display:grid;grid-template-columns:.95fr 1.05fr;gap:40px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:32px;scroll-margin-top:90px}
@@ -408,7 +423,7 @@ h1,h2,h3,h4{letter-spacing:-.02em}
   ];
   var lvl={3:"Main pain point",2:"Common",1:"Minor or rare"};
   document.getElementById("matrix").innerHTML="<thead><tr><th scope=\"col\">Area</th>"+P.map(function(p){return "<th scope=\"col\">"+p[1]+"</th>"}).join("")+"</tr></thead><tbody>"+
-    T.map(function(t){return "<tr><td><a href=\"#"+t.id+"\">"+t.name.replace(/&/g,"&amp;")+"</a></td>"+P.map(function(p){var v=t.m[p[0]];return "<td><i class=\"dot d"+v+"\" title=\""+lvl[v]+"\" aria-label=\""+lvl[v]+"\"></i></td>"}).join("")+"</tr>"}).join("")+"</tbody>";
+    T.map(function(t){return "<tr><td><a href=\"#"+t.id+"\">"+t.name.replace(/&/g,"&amp;")+"</a></td>"+P.map(function(p){var v=t.m[p[0]];return "<td data-label=\""+p[1].replace(/&/g,"&amp;")+"\"><i class=\"dot d"+v+"\" title=\""+lvl[v]+"\" aria-label=\""+lvl[v]+"\"></i></td>"}).join("")+"</tr>"}).join("")+"</tbody>";
   document.getElementById("pillars").innerHTML=T.map(function(t,i){
     var pains=P.filter(function(p){return t.m[p[0]]>=2}).sort(function(a,b){return t.m[b[0]]-t.m[a[0]]});
     return "<article class=\"pillar\" id=\""+t.id+"\"><div class=\"left\"><span class=\"num\">Area "+(i+1)+" of 6</span><h3>"+t.name.replace(/&/g,"&amp;")+"</h3><p class=\"ctx\">"+t.ctx+"</p><div class=\"pains\" aria-label=\"Key pain points\">"+
