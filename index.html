@@ -193,6 +193,9 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .helps p{color:var(--muted);max-width:60ch}
 .helps a{color:var(--heading);font-weight:500;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:4px}
 
+.helps{margin-top:56px;display:flex;flex-wrap:wrap;gap:20px 40px;align-items:center;justify-content:space-between;background:var(--panel);border-left:4px solid var(--accent);border-radius:var(--r);padding:28px 32px}
+.helps h3{margin:0 0 6px}.helps p{margin:0;color:var(--muted);max-width:56ch}
+@media (max-width:600px){.helps{padding:24px 20px}}
 /* People */
 .people{background:var(--panel)}
 .people .grid{display:grid;grid-template-columns:1fr;gap:24px;max-width:960px}
@@ -436,10 +439,9 @@ footer .line{font:500 1rem var(--display);color:var(--heading)}
         <p>AI prices, limits and restrictions are moving fast. We can't predict them, so we plan for them. Every solution we build still makes sense if running costs tripled, has a fallback, and keeps your files in your own accounts.</p>
       </article>
     </div>
-    <div class="helps" style="margin-top:56px;display:grid;gap:12px">
-      <span class="eyebrow">Where AI often helps first</span>
-      <p>It depends on your sector. See examples of the changes that tend to matter most in each area we work in.</p>
-      <p><a href="/who-we-work-with/">See who we work with →</a></p>
+    <div class="helps">
+      <div><h3>Where AI often helps first</h3><p>It depends on your sector. See examples of the changes that tend to matter most in each area we work in.</p></div>
+      <a class="btn btn-ghost" href="/who-we-work-with/">See who we work with</a>
     </div>
   </div>
 </section>
