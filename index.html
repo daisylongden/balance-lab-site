@@ -186,6 +186,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .why .ic svg{stroke:var(--heading)}
 .why p{color:var(--muted)}
 @media (max-width:860px){.why .grid{grid-template-columns:1fr;gap:32px}}
+/* Phones: sprint and why share a background, so shorten the gap and mark the break with a line */
+@media (max-width:860px){#sprint{padding-bottom:48px}#sprint+.why{padding-top:48px}#sprint+.why>.wrap{border-top:1px solid var(--line);padding-top:48px}}
 
 /* Where AI often helps first: points to the sector page */
 .helps p{color:var(--muted);max-width:60ch}
