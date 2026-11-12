@@ -249,7 +249,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-bet
 <style>
 .pressures{background:var(--band);color:var(--band-fg)}
 .pressures .eyebrow{color:color-mix(in srgb,var(--band-fg) 65%,transparent)}
-.pressures .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:28px}
+.pressures .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 40px}
 .pressures article{display:grid;gap:8px;align-content:start;border-top:2px solid var(--accent);padding-top:14px}
 .pressures p{color:color-mix(in srgb,var(--band-fg) 72%,transparent);font-size:.94rem}
 @media (max-width:1000px){.pressures .grid{grid-template-columns:repeat(2,1fr)}}
@@ -309,6 +309,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-bet
 .story .slot{border:1.5px dashed color-mix(in srgb,var(--fg) 30%,transparent);border-radius:var(--r);padding:18px;display:grid;gap:8px;color:var(--fg);background:var(--surface)}
 .story .slot ol{margin:0;padding-left:1.2em;color:var(--muted);font-size:.93rem;display:grid;gap:4px}
 @media (max-width:860px){.story .grid{grid-template-columns:1fr;gap:28px}}
+/* Story and CTA share a background: one short gap with a line, not two full section paddings */
+.story{padding-bottom:48px}.story+.cta-band{padding-top:0}.story+.cta-band .wrap{border-top:1px solid var(--line);padding-top:48px}
 
 /* Balance Lab brand overrides (Figma brand kit, 10 Nov 2026) */
 
@@ -338,7 +340,7 @@ h1,h2,h3,h4{letter-spacing:-.02em}
   <div class="wrap">
     <div class="head">
       <span class="eyebrow">Across the sector</span>
-      <h2>Five pressures almost everyone we talk to shares</h2>
+      <h2>Six pressures almost everyone we talk to shares</h2>
     </div>
     <div class="grid">
       <article><h3>Reporting load</h3><p>Every funder wants its own format, and the same numbers get rewritten again and again.</p></article>
@@ -346,6 +348,7 @@ h1,h2,h3,h4{letter-spacing:-.02em}
       <article><h3>Plain language</h3><p>Information has to work for everyone, often at B1 level or below, and in more than one language.</p></article>
       <article><h3>Tighter budgets</h3><p>Rising demand, and in development work, Dutch government funding cuts from 2026.</p></article>
       <article><h3>Sensitive data</h3><p>Case notes, health and money worries. One careless tool choice can break trust.</p></article>
+      <article><h3>Access to information</h3><p>Information is spread across many sources, so staff and communities lose time finding what they need.</p></article>
     </div>
   </div>
 </section>
@@ -370,7 +373,7 @@ h1,h2,h3,h4{letter-spacing:-.02em}
   <div class="wrap grid">
     <div>
       <span class="eyebrow">From our own work</span>
-      <blockquote style="margin-top:16px">"A new tool only sticks when the people using it helped shape it. Most of the work is with the team, not the tech."</blockquote>
+      <blockquote style="margin-top:16px">&ldquo;A new tool only sticks when the people using it helped shape it. Most of the work is with the team, not the tech.&rdquo;</blockquote>
     </div>
     <div class="body">
       <p>Before Balance Lab, we spent years building products, processes and businesses across tech and impact. We've introduced new ways of working inside mission-driven organisations, and seen first hand how capacity gets capped when there's always something more urgent than fixing a process.</p>
@@ -393,7 +396,7 @@ h1,h2,h3,h4{letter-spacing:-.02em}
     {id:"poverty",name:"Poverty, debt & basic needs",
      ctx:"National bodies that support networks of local branches and volunteers, helping households with debt, food and school costs. Demand keeps rising while most help is given by volunteers.",
      m:{intake:3,vol:3,report:3,plain:3,research:1,comms:2,admin:3},
-     ai:[["A knowledge assistant for volunteers","Answers on debt rules and local procedures, so coordinators aren't the helpdesk."],["Completeness checks on applications","Spots missing documents before a person reviews the application."],["Letters in plain Dutch","Standard letters rewritten to B1 and checked by staff."],["One build, every branch","Built once nationally, then rolled out to each local branch."]],
+     ai:[["A knowledge assistant for volunteers","Answers on debt rules and local procedures, so coordinators aren't the helpdesk."],["Completeness checks on applications","Spots missing documents before a person reviews the application."],["All information in one place","One place where staff and service users find everything they need to know."],["One build, every branch","Built once nationally, then rolled out to each local branch."]],
      care:"AI never decides who is eligible for support. It prepares the file; a person decides."},
     {id:"youth",name:"Children, youth & education",
      ctx:"Programmes that bring guest teachers, mentors and companies into schools and neighbourhoods. A lot of matching and scheduling, and heavy reporting to corporate and foundation funders.",
@@ -408,7 +411,7 @@ h1,h2,h3,h4{letter-spacing:-.02em}
     {id:"migration",name:"Refugees, migration & inclusion",
      ctx:"Organisations helping newcomers into study, work and housing, usually through case-by-case support. Case files are long, communication is multilingual, and the data is highly sensitive.",
      m:{intake:3,vol:2,report:2,plain:3,research:1,comms:2,admin:3},
-     ai:[["Case file summaries","Faster handovers between coaches, using approved business tools only."],["Translating and simplifying letters","Official letters explained in plain language, with a native-speaker check."],["Suggesting vacancies and courses","Options for a coach to review with the person, not a ranking."]],
+     ai:[["Case file summaries","Faster handovers between coaches, using approved business tools only."],["Translating and simplifying letters","Official letters explained in plain language, with a native-speaker check."],["Suggesting vacancies and courses","Options for a coach to review with the person, not a ranking."],["All information in one place","One place where staff and service users find everything they need to know."]],
      care:"Strict data rules come first here. We start with workflows that don't touch personal data."},
     {id:"intl",name:"International development & human rights",
      ctx:"Dutch-based organisations working with partners abroad, mostly funded through government and foundation programmes. Reporting load is very high, and budgets are shrinking with Dutch aid cuts.",
