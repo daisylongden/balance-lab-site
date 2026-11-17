@@ -319,6 +319,32 @@ body{margin:0}
   .nav.open ul a[aria-current="page"]{box-shadow:none;color:var(--heading,var(--fg))}
 }
 @media (max-width:380px){.logo b{font-size:1.1rem}.nav .wrap>.btn{padding:.6em .8em}}
+/* Join the community: sign-up dialog */
+button.btn{font-family:var(--body);line-height:inherit}
+button.btn-ghost{background:transparent}
+.sessions .first{margin-top:32px;display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center}
+.sessions .first p{margin:0;font:500 1.15rem var(--display)}
+dialog.join-dlg{border:0;padding:0;border-radius:4px;background:var(--bg);color:var(--fg);width:min(520px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;box-shadow:0 24px 60px -20px rgba(52,37,44,.55)}
+dialog.join-dlg::backdrop{background:rgba(52,37,44,.55)}
+.join-dlg .in{padding:28px;display:grid;gap:16px}
+.join-dlg .top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+.join-dlg h2{font-size:1.6rem;margin:0}
+.join-dlg .x{flex:none;width:44px;height:44px;margin:-10px -12px 0 0;border:0;background:transparent;color:var(--muted);font-size:1.6rem;line-height:1;cursor:pointer;border-radius:2px}
+.join-dlg p{margin:0}
+.join-dlg .intro{color:var(--muted)}
+.join-dlg form{display:grid;gap:14px}
+.join-dlg label{font-size:.9rem;font-weight:500;display:grid;gap:6px;color:var(--fg)}
+.join-dlg input[type=text],.join-dlg input[type=email]{font:inherit;font-size:1rem;padding:12px 14px;border-radius:2px;border:1px solid var(--line);background:var(--surface);color:var(--fg);width:100%;box-sizing:border-box}
+.join-dlg input[aria-invalid=true]{border-color:#B3261E}
+.join-dlg .consent{grid-template-columns:auto 1fr;gap:12px;align-items:start;font-weight:400;font-size:.92rem;line-height:1.45}
+.join-dlg .consent input{width:22px;height:22px;margin:0;accent-color:var(--brand)}
+.join-dlg .small{font-size:.85rem;color:var(--muted)}
+.join-dlg .note{font-size:.92rem;min-height:1.4em}
+.join-dlg .note.err{color:#B3261E}
+@media (prefers-color-scheme:dark){.join-dlg .note.err{color:#FFB4AB}.join-dlg input[aria-invalid=true]{border-color:#FFB4AB}}
+.join-dlg .btn[disabled]{opacity:.6;cursor:default}
+.join-dlg .done{display:grid;gap:16px}
+.join-dlg [hidden]{display:none}
 /* Ops Table nav */
 html{scroll-padding-top:84px}
 .nav .logo b{font:500 1.2rem var(--display);letter-spacing:-.02em}
@@ -356,7 +382,7 @@ html{scroll-padding-top:84px}
       <p class="ai"><b>Including where AI can help, and where it should stay out of your processes.</b></p>
       <ul class="facts" aria-label="Key facts"><li>Free</li><li>A breakfast table each month</li><li>Conversation between tables</li><li>10 attendees per session</li><li>Max 2 per org</li><li>No pitches</li></ul>
       <div class="ctas">
-        <span class="btn btn-primary soon" aria-disabled="true">Registration opens soon</span>
+        <button class="btn btn-primary" type="button" data-join>Join the community</button>
       </div>
     </div>
     <div class="centre" aria-hidden="true"><svg><use href="#ot"/></svg><p>Better ops. Shared.</p></div>
@@ -417,7 +443,7 @@ html{scroll-padding-top:84px}
     <div class="head"><span class="eyebrow">How the community works</span><h2 id="rhythm">A table once a month, a community all month</h2></div>
     <ol class="loop">
       <li><span class="n">01</span><h3>At the table</h3><p>Once a month, 10 people bring real problems and work through them together.</p></li>
-      <li><span class="n">02</span><h3>Between tables</h3><p>The group stays open. Ask a question, test an idea, report back on what you tried.</p></li>
+      <li><span class="n">02</span><h3>Between tables</h3><p>The group stays connected via the community chat. Ask a question, test an idea, report back on what you tried.</p></li>
       <li><span class="n">03</span><h3>Shared further</h3><p>With your permission, we share members' ideas and wins in our recaps, so good work reaches more teams.</p></li>
     </ol>
   </div>
@@ -443,6 +469,7 @@ html{scroll-padding-top:84px}
       <li><time datetime="2027-01-15">Fri 15 Jan</time><b>Where does the time go?</b><span class="btn btn-primary reg soon" aria-disabled="true">Registration opens soon</span></li>
     </ol>
     <p class="after">Venue: central Amsterdam, shared after sign-up.</p>
+    <div class="first"><p>Be the first to know when registration opens.</p><button class="btn btn-primary" type="button" data-join>Join the community</button></div>
   </div>
 </section>
 
@@ -455,7 +482,7 @@ html{scroll-padding-top:84px}
       <details><summary>Do I need to know about AI?</summary><p>No. We start with your problems. AI comes up where it might help, and we're just as honest about where it shouldn't.</p></details>
       <details><summary>Can I bring a colleague?</summary><p>Yes, up to 2 people per organisation. Each session has 10 seats, so it stays small enough for everyone to speak.</p></details>
       <details><summary>Do I have to come every month?</summary><p>No. Come when it suits you. Each table works on its own, and you stay part of the group in between.</p></details>
-      <details><summary>What happens between tables?</summary><p>The group stays open. Members ask questions, share drafts and report back on what they tried. With your permission, we share the ideas and wins in our recaps, so good work gets seen by more teams.</p></details>
+      <details><summary>What happens between tables?</summary><p>The group stays connected via the community chat. Members ask questions, share drafts and report back on what they tried. With your permission, we share the ideas and wins in our recaps, so good work gets seen by more teams.</p></details>
     </div>
   </div>
 </section>
@@ -465,9 +492,9 @@ html{scroll-padding-top:84px}
     <div class="text">
       <span class="eyebrow">Find your seat</span>
       <h2 id="joinh">Join the table</h2>
-      <p class="lede">Registration for the first table on Fri 15 January opens soon. Once your seat is confirmed, you'll get the venue and a calendar invite.</p>
+      <p class="lede">Registration for the first table on Fri 15 January opens soon. Join the community and we'll email you first when it does.</p>
       <div class="ctas">
-        <span class="btn btn-primary soon" aria-disabled="true">Registration opens soon</span>
+        <button class="btn btn-primary" type="button" data-join>Join the community</button>
       </div>
       <p class="alt">Questions first? Email <a href="mailto:hello@balance-lab.nl?subject=The%20Ops%20Table">hello@balance-lab.nl</a>.</p>
     </div>
@@ -480,10 +507,35 @@ html{scroll-padding-top:84px}
 </section>
 </main>
 
+<dialog class="join-dlg" id="joinDlg" aria-labelledby="joinDlgT">
+  <div class="in">
+    <div class="top"><h2 id="joinDlgT">Join the community</h2><button class="x" type="button" data-close aria-label="Close">&times;</button></div>
+    <div id="joinFormWrap" style="display:grid;gap:16px">
+      <p class="intro">Registration for the first table isn't open yet. Leave your details and we'll email you first when it is.</p>
+      <form id="joinForm" novalidate>
+        <label for="jName">Your name<input id="jName" name="name" type="text" autocomplete="name" maxlength="120" required></label>
+        <label for="jRole">Your role<input id="jRole" name="role" type="text" autocomplete="organization-title" maxlength="120" required></label>
+        <label for="jOrg">Organisation<input id="jOrg" name="organisation" type="text" autocomplete="organization" maxlength="160" required></label>
+        <label for="jEmail">Email<input id="jEmail" name="email" type="email" autocomplete="email" maxlength="254" required></label>
+        <label class="consent" for="jConsent"><input id="jConsent" name="consent" type="checkbox" required><span id="jConsentText">Yes, email me about Ops Table events and activities. Nothing else.</span></label>
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+        <button class="btn btn-primary" type="submit" style="justify-self:start">Join the community</button>
+        <p class="note" id="joinNote" role="status" aria-live="polite"></p>
+        <p class="small">You can unsubscribe at any time. See <a href="/privacy/">how we handle your data</a>.</p>
+      </form>
+    </div>
+    <div class="done" id="joinDone" hidden>
+      <p><b>You're on the list.</b> We'll email you as soon as registration opens for the first table on Fri 15 January.</p>
+      <button class="btn btn-ghost" type="button" data-close style="justify-self:start">Close</button>
+    </div>
+  </div>
+</dialog>
+
 <footer>
   <div class="wrap">
     <a class="logo" href="/"><svg width="26" height="29" viewBox="0 0 165 182" aria-hidden="true" style="color:var(--brand)"><use href="#bl-b"/></svg><b style="font-size:1rem">Balance Lab</b></a>
     <span>Amsterdam · AI implementation for mission-driven organisations</span>
+    <a href="/privacy/">Privacy</a>
   </div>
 </footer>
 
@@ -497,6 +549,34 @@ html{scroll-padding-top:84px}
   h.querySelector('ul').addEventListener('click',function(e){if(e.target.closest('a'))set(false)});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&h.classList.contains('open')){set(false);b.focus()}});
   document.addEventListener('click',function(e){if(!h.contains(e.target))set(false)});
+})();
+</script>
+<script>
+/* Join the community: saves a sign-up to Supabase (insert-only public key; the list itself is not readable from the browser) */
+(function(){
+  var SUPABASE_URL='', SUPABASE_KEY='';
+  var d=document.getElementById('joinDlg'),f=document.getElementById('joinForm'),note=document.getElementById('joinNote');
+  if(!d||!f)return;
+  document.addEventListener('click',function(e){
+    if(e.target.closest('[data-join]')){if(d.showModal)d.showModal();else d.setAttribute('open','');document.getElementById('jName').focus()}
+    else if(e.target.closest('[data-close]')||e.target===d)d.close();
+  });
+  function say(t,err){note.textContent=t;note.classList.toggle('err',!!err)}
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var v={},bad=null;
+    ['name','role','organisation','email'].forEach(function(k){var i=f.elements[k];v[k]=i.value.trim();
+      var ok=v[k]&&(k!=='email'||/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v[k]));i.setAttribute('aria-invalid',ok?'false':'true');if(!ok&&!bad)bad=i});
+    if(bad){say(bad.name==='email'&&v.email?'Please check your email address.':'Please fill in every field.',true);bad.focus();return}
+    if(!f.elements.consent.checked){say('Please tick the box so we can email you.',true);f.elements.consent.focus();return}
+    function done(){document.getElementById('joinFormWrap').style.display='none';document.getElementById('joinDone').hidden=false}
+    if(f.elements.website.value){done();return}
+    var b=f.querySelector('button[type=submit]');b.disabled=true;say('Sending…');
+    v.email=v.email.toLowerCase();v.consent=true;v.consent_text=document.getElementById('jConsentText').textContent;
+    fetch(SUPABASE_URL+'/rest/v1/ops_table_members',{method:'POST',headers:{'Content-Type':'application/json',apikey:SUPABASE_KEY,Authorization:'Bearer '+SUPABASE_KEY,Prefer:'return=minimal'},body:JSON.stringify(v)})
+      .then(function(r){if(r.ok||r.status===409)done();else throw new Error(r.status)})
+      .catch(function(){b.disabled=false;say("Sorry, that didn't go through. Please try again, or email hello@balance-lab.nl.",true)});
+  });
 })();
 </script>
 </body>
