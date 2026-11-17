@@ -517,7 +517,7 @@ html{scroll-padding-top:84px}
         <label for="jRole">Your role<input id="jRole" name="role" type="text" autocomplete="organization-title" maxlength="120" required></label>
         <label for="jOrg">Organisation<input id="jOrg" name="organisation" type="text" autocomplete="organization" maxlength="160" required></label>
         <label for="jEmail">Email<input id="jEmail" name="email" type="email" autocomplete="email" maxlength="254" required></label>
-        <label class="consent" for="jConsent"><input id="jConsent" name="consent" type="checkbox" required><span id="jConsentText">Yes, email me about Ops Table events and activities. Nothing else.</span></label>
+        <label class="consent" for="jConsent"><input id="jConsent" name="consent" type="checkbox" required><span id="jConsentText">Yes, email me about The Ops Table events and activities. Nothing else.</span></label>
         <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
         <button class="btn btn-primary" type="submit" style="justify-self:start">Join the community</button>
         <p class="note" id="joinNote" role="status" aria-live="polite"></p>
@@ -554,7 +554,7 @@ html{scroll-padding-top:84px}
 <script>
 /* Join the community: saves a sign-up to Supabase (insert-only public key; the list itself is not readable from the browser) */
 (function(){
-  var SUPABASE_URL='', SUPABASE_KEY='';
+  var SUPABASE_URL='https://jewkddjztasczmcknmqt.supabase.co', SUPABASE_KEY='sb_publishable_JjZrFZ9XoV8-qtyR0u4mHg_wIDe_jWL';
   var d=document.getElementById('joinDlg'),f=document.getElementById('joinForm'),note=document.getElementById('joinNote');
   if(!d||!f)return;
   document.addEventListener('click',function(e){
@@ -568,7 +568,7 @@ html{scroll-padding-top:84px}
     ['name','role','organisation','email'].forEach(function(k){var i=f.elements[k];v[k]=i.value.trim();
       var ok=v[k]&&(k!=='email'||/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v[k]));i.setAttribute('aria-invalid',ok?'false':'true');if(!ok&&!bad)bad=i});
     if(bad){say(bad.name==='email'&&v.email?'Please check your email address.':'Please fill in every field.',true);bad.focus();return}
-    if(!f.elements.consent.checked){say('Please tick the box so we can email you.',true);f.elements.consent.focus();return}
+    if(!f.elements.consent.checked){say('Please confirm that we can keep you informed on community events and activities.',true);f.elements.consent.focus();return}
     function done(){document.getElementById('joinFormWrap').style.display='none';document.getElementById('joinDone').hidden=false}
     if(f.elements.website.value){done();return}
     var b=f.querySelector('button[type=submit]');b.disabled=true;say('Sending…');
