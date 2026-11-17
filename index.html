@@ -727,7 +727,7 @@ document.querySelectorAll('.more-btn').forEach(function(b){
   items.forEach(function(it,i){var P=pt(ang(i)),pos='left:'+P[0]+'%;top:'+P[1]+'%';
     html+='<button class="node'+(i==N-1?' last':'')+'" type="button" role="tab" aria-selected="false" aria-label="Step '+it.n+': '+it.h+'" style="'+pos+'">'+it.n+'</button>';
   });
-  html+='<div class="mid" aria-live="polite"><span class="n"></span><h3></h3></div></div></div><div class="panel"><div class="detail"><span class="n"></span><h3></h3><p></p></div><p class="hint">'+(matchMedia('(hover:hover)').matches?'Hover over or click a step.':'Tap a step.')+' Step 05 leads back to 01.</p></div>';
+  html+='<div class="mid" aria-live="polite"><span class="n"></span><h3></h3></div></div></div><div class="panel"><div class="detail"><span class="n"></span><h3></h3><p></p></div><p class="hint">'+(matchMedia('(hover:hover)').matches?'Hover over or click a step.':'Tap a step.')+'</p></div>';
   el.innerHTML=html;ol.parentNode.insertBefore(el,ol.nextSibling);
   var nodes=el.querySelectorAll('.node');
   function show(i){nodes.forEach(function(n,j){n.setAttribute('aria-selected',i==j)});
