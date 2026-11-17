@@ -183,6 +183,50 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   .tl .m::before{top:5px;left:-9px}
 }
 
+
+/* Phones: sprint timeline and Why cards show headings only, with a toggle for the detail */
+.more-btn{display:none}
+@media (max-width:760px){
+  .more-btn{display:inline-flex;align-items:center;gap:8px;justify-self:start;background:none;border:0;padding:0;font:500 .95rem var(--body);color:var(--heading);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+  .more-btn::after{content:"+";text-decoration:none;display:inline-block;font-size:1.1rem;line-height:1}
+  .more-btn[aria-expanded="true"]::after{content:"\2013"}
+  .tl-toggle{margin-top:20px}
+  .js .tl:not(.open) p{display:none}
+  .js .tl:not(.open) div{padding-bottom:18px}
+  .why .grid{gap:12px}
+  .why article{grid-template-columns:40px 1fr 28px;column-gap:14px;row-gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 16px 18px;cursor:pointer}
+  .why article .ic{grid-area:1/1;width:40px;height:40px}
+  .why .ic svg{width:22px;height:22px}
+  .why article h3{grid-area:1/2;font-size:1.1rem;line-height:1.3}
+  .why .more-ic{grid-area:1/3;justify-self:end;width:28px;height:28px;justify-content:center;border:1.5px solid var(--heading);border-radius:50%;text-decoration:none}
+  .why .more-ic::after{font-size:1.1rem}
+  .why article p{grid-area:2/1/3/4;font-size:.95rem;color:var(--muted)}
+  .js .why article:not(.open) p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+}
+/* Phones: How we work as a cycle (built by JS from the .steps list; desktop keeps the cards) */
+.cycle{display:none}
+@media (max-width:760px){
+  .js .steps{display:none}
+  .js .cycle{display:grid;max-width:360px;margin:0 auto}
+  .js #approach .head{margin-bottom:24px}
+  .cycle .stage{position:relative;padding:8px}
+  .cycle .ring{position:relative;aspect-ratio:1}
+  .cycle .arc{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+  .cycle .arc path{fill:none;stroke:var(--accent);stroke-width:1.4;stroke-linecap:round}
+  .cycle .arc .hd{fill:var(--accent);stroke:none}
+  .cycle .node{position:absolute;width:48px;height:48px;margin:-24px 0 0 -24px;border-radius:50%;border:1.5px solid var(--heading);background:var(--bg);color:var(--heading);font:500 .95rem var(--display);cursor:pointer;padding:0;transition:background .2s,color .2s}
+  .cycle .node[aria-selected="true"]{background:var(--brand);color:var(--on-brand);border-color:var(--brand)}
+  .cycle .node.last{background:var(--sage);border-color:var(--sage);color:var(--fg)}
+  .cycle .node.last[aria-selected="true"]{background:var(--brand);border-color:var(--brand);color:var(--on-brand)}
+  .cycle .mid{position:absolute;inset:22%;display:grid;place-content:center;text-align:center;gap:6px;padding:8px}
+  .cycle .mid .n{font:500 .78rem var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .cycle .mid h3{font-size:1.15rem;line-height:1.25;margin:0}
+  .cycle .detail{margin-top:16px;padding:18px 20px;font-size:.98rem;min-height:5.5em;background:var(--soft);border-radius:var(--r);color:var(--fg);border-left:4px solid var(--accent);transition:background .25s,border-color .25s}
+  .cycle .detail p{margin:0}
+  .cycle .detail .n,.cycle .detail h3{display:none}
+  .cycle.on-last .detail{background:var(--sage);border-left-color:var(--brand)}
+  .cycle .hint{margin-top:10px;text-align:center;font-size:.85rem;color:var(--muted)}
+}
 /* Why us */
 .why .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px 56px}
 .why article{display:grid;gap:12px;align-content:start}
@@ -345,6 +389,7 @@ footer .line{font:500 1rem var(--display);color:var(--heading)}
  ]
 }
 </script>
+<script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -477,7 +522,7 @@ footer .line{font:500 1rem var(--display);color:var(--heading)}
       <p class="lede">We measure before we build, so you can see the return in hours and in outcomes, not just in enthusiasm.</p>
     </div>
     <div class="timeline">
-      <div class="tl">
+      <div class="tl" id="sprint-tl">
         <div class="m"><span class="wk">Week 1</span><b>Baseline</b><p>Measure time spent today. Agree goals and red lines.</p></div>
         <div><span class="wk">Week 2</span><b>Design together</b><p>Workshops with the people doing the work.</p></div>
         <div><span class="wk">Week 3</span><b>Build</b><p>First version live with a pilot group.</p></div>
@@ -487,6 +532,7 @@ footer .line{font:500 1rem var(--display);color:var(--heading)}
         <div class="m"><span class="wk">Month 3</span><b>Health check</b><p>Does it still save time once the novelty is gone?</p></div>
       </div>
     </div>
+    <button class="more-btn tl-toggle" type="button" aria-expanded="false" aria-controls="sprint-tl" data-open="Collapse" data-closed="Expand">Expand</button>
     <div class="roi">
       <div><b>Hours back</b><p>Time saved per week on the workflows we changed, measured against week 1.</p></div>
       <div><b>Adoption</b><p>How many of your team use the new way of working, and how confident they feel.</p></div>
@@ -505,21 +551,25 @@ footer .line{font:500 1rem var(--display);color:var(--heading)}
       <article>
         <div class="ic" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke-width="2"><path d="M13 3l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V6z"/><path d="M9 13l3 3 5-6"/></svg></div>
         <h3>AI that fits your ethics</h3>
+        <button class="more-btn more-ic" type="button" aria-expanded="false" aria-label="Show details"></button>
         <p>We start with your organisation, your values and the people you serve. Then we advise on where AI belongs, where it doesn't, and how to use it in a way that still feels like you.</p>
       </article>
       <article>
         <div class="ic" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke-width="2"><circle cx="9" cy="9" r="4"/><circle cx="18" cy="11" r="3"/><path d="M2 22c0-4 3-7 7-7s7 3 7 7M15 22c0-3 1.5-5.5 4-5.5s5 2 5 5.5"/></svg></div>
         <h3>People before technology</h3>
+        <button class="more-btn more-ic" type="button" aria-expanded="false" aria-label="Show details"></button>
         <p>We've spent years building teams and building tech. We know a tool only works when the people using it want it to, so change management is part of the job, not an afterthought.</p>
       </article>
       <article>
         <div class="ic" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke-width="2"><path d="M4 21V9l9-5 9 5v12"/><path d="M9 21v-7h8v7"/></svg></div>
         <h3>Capability, not dependency</h3>
+        <button class="more-btn more-ic" type="button" aria-expanded="false" aria-label="Show details"></button>
         <p>Our goal is for you to need us less. Every engagement ends with skills, guidelines and an internal lead who can take on the next time drain.</p>
       </article>
       <article>
         <div class="ic" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke-width="2"><path d="M21 13a8 8 0 1 1-2.3-5.7"/><path d="M21 4v5h-5"/><path d="M13 9v4l3 2"/></svg></div>
         <h3>Built to last when AI changes</h3>
+        <button class="more-btn more-ic" type="button" aria-expanded="false" aria-label="Show details"></button>
         <p>AI prices, limits and restrictions are moving fast. We can't predict them, so we plan for them. Every solution we build still makes sense if running costs tripled, has a fallback, and keeps your files in your own accounts.</p>
       </article>
     </div>
@@ -647,6 +697,45 @@ footer .line{font:500 1rem var(--display);color:var(--heading)}
   h.querySelector('ul').addEventListener('click',function(e){if(e.target.closest('a'))set(false)});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&h.classList.contains('open')){set(false);b.focus()}});
   document.addEventListener('click',function(e){if(!h.contains(e.target))set(false)});
+})();
+</script>
+<script>
+/* Phones: show/hide detail in the sprint timeline and Why cards */
+document.querySelectorAll('.why article').forEach(function(a){a.addEventListener('click',function(e){var b=a.querySelector('.more-ic');if(e.target.closest('.more-btn')||getComputedStyle(b).display=='none')return;b.click();});});
+document.querySelectorAll('.more-btn').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.getAttribute('aria-controls')?document.getElementById(b.getAttribute('aria-controls')):b.closest('article');
+    var open=!t.classList.contains('open');t.classList.toggle('open',open);
+    b.setAttribute('aria-expanded',open);if(b.dataset.closed)b.textContent=open?b.dataset.open:b.dataset.closed;else b.setAttribute('aria-label',open?'Hide details':'Show details');
+  });
+});
+</script>
+<script>
+/* Draw How we work as a cycle: tap or hover a step to see its detail */
+(function(){
+  var ol=document.querySelector('.steps');if(!ol)return;
+  var items=[].map.call(ol.children,function(li){return{n:li.querySelector('.n').textContent,h:li.querySelector('h3').textContent,p:li.querySelector('p').textContent}});
+  var N=items.length,R=40,C=50,el=document.createElement('div');el.className='cycle';
+  var pt=function(a){return[C+R*Math.cos(a),C+R*Math.sin(a)]},ang=function(i){return -Math.PI/2+i*2*Math.PI/N};
+  var gap=0.2,svg='<svg class="arc" viewBox="0 0 100 100" aria-hidden="true">';
+  for(var i=0;i<N;i++){var a=ang(i)+gap,b=ang(i+1)-gap,A=pt(a),B=pt(b),t=b;
+    svg+='<path d="M'+A[0].toFixed(2)+' '+A[1].toFixed(2)+' A'+R+' '+R+' 0 0 1 '+B[0].toFixed(2)+' '+B[1].toFixed(2)+'"/>';
+    var dx=-Math.sin(t),dy=Math.cos(t),nx=Math.cos(t),ny=Math.sin(t),s=1.8;
+    svg+='<polygon class="hd" points="'+(B[0]+dx*s).toFixed(2)+','+(B[1]+dy*s).toFixed(2)+' '+(B[0]-dx*s*.4+nx*s).toFixed(2)+','+(B[1]-dy*s*.4+ny*s).toFixed(2)+' '+(B[0]-dx*s*.4-nx*s).toFixed(2)+','+(B[1]-dy*s*.4-ny*s).toFixed(2)+'"/>';}
+  svg+='</svg>';
+  var html='<div class="stage"><div class="ring">'+svg;
+  items.forEach(function(it,i){var P=pt(ang(i)),pos='left:'+P[0]+'%;top:'+P[1]+'%';
+    html+='<button class="node'+(i==N-1?' last':'')+'" type="button" role="tab" aria-selected="false" aria-label="Step '+it.n+': '+it.h+'" style="'+pos+'">'+it.n+'</button>';
+  });
+  html+='<div class="mid" aria-live="polite"><span class="n"></span><h3></h3></div></div></div><div class="panel"><div class="detail"><span class="n"></span><h3></h3><p></p></div><p class="hint">'+(matchMedia('(hover:hover)').matches?'Hover over or click a step.':'Tap a step.')+' Step 05 leads back to 01.</p></div>';
+  el.innerHTML=html;ol.parentNode.insertBefore(el,ol.nextSibling);
+  var nodes=el.querySelectorAll('.node');
+  function show(i){nodes.forEach(function(n,j){n.setAttribute('aria-selected',i==j)});
+    ['.mid .n','.detail .n'].forEach(function(q){el.querySelector(q).textContent='Step '+items[i].n});
+    ['.mid h3','.detail h3'].forEach(function(q){el.querySelector(q).textContent=items[i].h});
+    el.querySelector('.detail p').textContent=items[i].p;el.classList.toggle('on-last',i==N-1)}
+  [nodes].forEach(function(list){list.forEach(function(n,i){n.addEventListener('click',function(){show(i)});n.addEventListener('mouseenter',function(){if(matchMedia('(hover:hover)').matches)show(i)})})});
+  show(0);
 })();
 </script>
 </body>
