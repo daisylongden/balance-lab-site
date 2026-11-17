@@ -6,6 +6,7 @@ Static site for [balance-lab.nl](https://balance-lab.nl), hosted on GitHub Pages
 - `how-we-use-ai/`: how we use AI (red lines and commitments)
 - `who-we-work-with/`: the areas we work in
 - `the-ops-table/`: The Ops Table, the free monthly roundtable (not in the main nav yet)
+- `privacy/`: privacy notice (linked from the Ops Table sign-up form)
 - `assets/`: favicon and photos
 - `CNAME`: the custom domain
 
