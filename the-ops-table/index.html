@@ -568,7 +568,7 @@ html{scroll-padding-top:84px}
     ['name','role','organisation','email'].forEach(function(k){var i=f.elements[k];v[k]=i.value.trim();
       var ok=v[k]&&(k!=='email'||/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v[k]));i.setAttribute('aria-invalid',ok?'false':'true');if(!ok&&!bad)bad=i});
     if(bad){say(bad.name==='email'&&v.email?'Please check your email address.':'Please fill in every field.',true);bad.focus();return}
-    if(!f.elements.consent.checked){say('Please confirm that we can keep you informed on community events and activities.',true);f.elements.consent.focus();return}
+    if(!f.elements.consent.checked){say('Please confirm that we can keep you informed on community related topics.',true);f.elements.consent.focus();return}
     function done(){document.getElementById('joinFormWrap').style.display='none';document.getElementById('joinDone').hidden=false}
     if(f.elements.website.value){done();return}
     var b=f.querySelector('button[type=submit]');b.disabled=true;say('Sending…');
