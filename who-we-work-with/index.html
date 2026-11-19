@@ -478,7 +478,6 @@ h1,h2,h3,h4{letter-spacing:-.02em}
     list.innerHTML=r.map(function(x){return '<li><b>'+x.it[0]+'</b><span>'+x.it[1]+'</span>'+(x.why.length?'<small>Fits because: <em>'+x.why.map(esc).join(", ")+'</em></small>':'')+'</li>'}).join("");
     var c=["yes","youth","health","poverty","migration"].filter(function(k){return keys.indexOf(k)>-1}).map(function(k){return CARE[k]});
     care.innerHTML='<b>Handled with care:</b> '+(c.length?c.slice(0,2).join(" "):"Every idea is a starting point. We agree data rules and red lines in week 1, before choosing any tool.");
-    title.textContent=(keys.length||Object.keys(picked).length)?"Our best guess for you":"Where AI often helps first";
     reset.hidden=!keys.length;
   }
   f.addEventListener("click",function(e){var i=e.target.closest("input");if(!i)return;
