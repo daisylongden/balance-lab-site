@@ -208,6 +208,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-bet
 .jump a{font-size:.9rem;text-decoration:none;border:1px solid var(--line);background:var(--surface);border-radius:2px;padding:6px 14px}
 .jump a:hover{border-color:var(--fg)}
 .note-draft{font-size:.85rem;background:var(--lilac);border-radius:4px;padding:10px 14px;color:var(--fg)}
+.why-not{max-width:60ch;font-size:1rem;color:var(--muted);border-left:3px solid var(--accent);padding-left:14px}
+.why-not b{color:var(--fg);font-weight:600}
 .cta-band{background:var(--soft)}
 .cta-band .wrap{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between}
 .cta-band h2{font-size:clamp(1.6rem,3vw,2.2rem);max-width:24ch}
@@ -259,51 +261,53 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-bet
 @media (max-width:1000px){.pressures .grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.pressures .grid{grid-template-columns:1fr}}
 
-.glance .tablewrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
-.glance table{border-collapse:collapse;width:100%;min-width:760px;font-size:.9rem}
-.glance th,.glance td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:center}
-.glance th{font:500 .78rem var(--body);color:var(--muted);vertical-align:bottom}
-.glance td:first-child,.glance th:first-child{text-align:left;font:500 .95rem var(--display);color:var(--fg)}
-.glance td:first-child a{text-decoration:none}
-.glance tr:last-child td{border-bottom:none}
-.dot{display:inline-block;width:14px;height:14px;border-radius:50%}
-.d3{background:var(--fg)} .d2{background:color-mix(in srgb,var(--fg) 35%,transparent)} .d1{border:1.5px solid var(--line)}
-.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem;color:var(--muted);margin-top:12px}
-.legend span{display:inline-flex;gap:6px;align-items:center}
-/* Phones: one card per area instead of a wide table */
-@media (max-width:640px){
-  .glance .tablewrap{overflow:visible;background:none;border:0}
-  .glance table,.glance tbody,.glance tr,.glance td{display:block;min-width:0}
-  .glance thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-  .glance tr{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:12px}
-  .glance td{display:flex;align-items:center;gap:10px;padding:6px 0;border:0;text-align:left;font-size:.92rem}
-  .glance td::before{content:attr(data-label);order:2;color:var(--fg)}
-  .glance td:first-child{display:block;padding:0 0 10px;margin-bottom:4px;border-bottom:1px solid var(--line);font-size:1.05rem}
-  .glance td:first-child::before{content:none}
-  .glance td .dot{flex:none;order:1}
-  .glance .wrap{display:flex;flex-direction:column}
-  .glance .tablewrap{order:2}
-  .glance .legend{order:1;margin:0 0 16px}
-}
+.dgroups{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.dgroup{display:grid;gap:10px;align-content:start}
+.dgroup h3{display:flex;align-items:baseline;gap:10px;font-size:1.1rem;padding-bottom:10px;border-bottom:2px solid var(--accent);margin-bottom:4px}
+.dgroup h3 span{font:500 .78rem var(--mono);color:var(--muted)}
+.dgroup:nth-child(2) h3{border-color:var(--brand)}.dgroup:nth-child(4) h3{border-color:var(--lilac)}
+.drain{position:relative;text-align:left;display:grid;gap:4px;background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);padding:16px 44px 16px 18px;color:var(--fg);font:inherit;cursor:pointer;transition:border-color .15s,background .15s,transform .15s}
+.drain b{font:500 1.02rem/1.25 var(--display);letter-spacing:-.01em}
+.drain span{color:var(--muted);font-size:.9rem;line-height:1.5}
+.drain::after{content:"+";position:absolute;top:14px;right:14px;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font:500 .95rem/1 var(--body);color:var(--muted)}
+.drain:hover{border-color:var(--brand);transform:translateY(-1px)}
+.drain[aria-pressed="true"]{background:var(--soft);border-color:var(--brand)}
+.drain[aria-pressed="true"]::after{content:"\2713";background:var(--brand);border-color:var(--brand);color:var(--on-brand)}
+.dpicked{margin-top:20px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;font-weight:500}
+.dpicked a{color:var(--heading,var(--fg));text-underline-offset:4px;text-decoration-color:var(--accent);text-decoration-thickness:2px}
+@media (max-width:1000px){.dgroups{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.dgroups{grid-template-columns:1fr;gap:28px}}
+@media (prefers-reduced-motion:reduce){.drain{transition:none}.drain:hover{transform:none}}
 
-.pillars{display:grid;gap:20px}
-.pillar{display:grid;grid-template-columns:.95fr 1.05fr;gap:40px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:32px;scroll-margin-top:90px}
-.pillar .left{display:grid;gap:14px;align-content:start;min-width:0}
-.pillar .num{font:500 .78rem var(--mono);color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
-.pillar h3{font-size:clamp(1.4rem,2.4vw,1.8rem)}
-.pillar .ctx{color:var(--muted)}
-.pillar .pains{display:flex;flex-wrap:wrap;gap:8px}
-.pillar .pains span{font-size:.85rem;padding:5px 12px;border-radius:2px;background:var(--soft)}
-.pillar .pains span.main{background:var(--accent);color:var(--accent-ink);font-weight:600}
-.pillar .right{display:grid;gap:12px;align-content:start;min-width:0}
-.pillar .right h4{margin:0;font:500 .78rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.pillar ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
-.pillar li{display:grid;gap:2px;padding-left:16px;border-left:2px solid var(--line)}
-.pillar li b{font-family:var(--display);font-size:1.02rem}
-.pillar li span{color:var(--muted);font-size:.93rem}
-.pillar .care{font-size:.9rem;background:var(--lilac);border-radius:4px;padding:10px 14px}
-.pillar .care b{font-weight:600}
-@media (max-width:880px){.pillar{grid-template-columns:1fr;gap:24px;padding:24px}}
+.finder{background:var(--soft)}
+.fbox{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.filters{display:grid;gap:22px}
+.filters fieldset{border:0;margin:0;padding:0;display:grid;gap:10px;min-width:0}
+.filters legend{font:500 .78rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:0;margin-bottom:10px}
+.filters .opts{display:flex;flex-wrap:wrap;gap:8px}
+.filters label{position:relative;cursor:pointer}
+.filters input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.filters label span{display:inline-flex;align-items:center;min-height:40px;padding:6px 14px;border:1.5px solid var(--line);border-radius:2px;background:var(--surface);font-size:.92rem;transition:background .15s,border-color .15s,color .15s}
+.filters label:hover span{border-color:var(--brand)}
+.filters input:checked+span{background:var(--brand);border-color:var(--brand);color:var(--on-brand)}
+.filters input:focus-visible+span{outline:3px solid var(--brand);outline-offset:2px}
+.filters select{display:none;width:100%;min-height:46px;font:500 1rem var(--body);color:var(--fg);background:var(--surface);border:1.5px solid var(--line);border-radius:2px;padding:8px 12px}
+.results{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px;display:grid;gap:16px;position:sticky;top:96px}
+.rhead{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.rhead h3{font-size:1.35rem}
+.reset{background:none;border:0;padding:0;font:500 .9rem var(--body);color:var(--muted);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.results ol{list-style:none;margin:0;padding:0;display:grid;gap:14px;counter-reset:r}
+.results li{display:grid;gap:3px;padding-left:16px;border-left:3px solid var(--accent)}
+.results li:first-child{border-left-color:var(--brand)}
+.results li b{font:500 1.05rem var(--display)}
+.results li span{color:var(--muted);font-size:.93rem}
+.results li small{font-size:.8rem;color:var(--muted)}
+.results li small em{font-style:normal;color:var(--fg)}
+.results .care{font-size:.9rem;background:var(--lilac);border-radius:4px;padding:10px 14px}
+.results .care b{font-weight:600}
+@media (max-width:880px){.fbox{grid-template-columns:1fr;gap:28px}.results{position:static;padding:22px}
+  .filters{grid-template-columns:1fr 1fr;gap:14px 12px}.filters .opts{display:none}.filters select{display:block}.filters legend{margin-bottom:6px;font-size:.72rem}}
+@media (max-width:380px){.filters{grid-template-columns:1fr}}
 
 .story{background:var(--soft)}
 .story .grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
@@ -333,10 +337,8 @@ h1,h2,h3,h4{letter-spacing:-.02em}
   <div class="wrap">
     <span class="crumb"><a href="/">Balance Lab</a> / Who we work with</span>
     <h1>Who we work with, and what gets in their way</h1>
-    <p class="lede">Every corner of the impact sector has its own pressures. These are the six areas we focus on, the problems we hear most often in each, and where AI can take some of the weight.</p>
-    <nav class="jump" aria-label="Areas on this page">
-      <a href="#poverty">Poverty, debt &amp; basic needs</a><a href="#youth">Children, youth &amp; education</a><a href="#health">Health &amp; patient organisations</a><a href="#migration">Refugees, migration &amp; inclusion</a><a href="#intl">Development &amp; human rights</a><a href="#networks">Social enterprises &amp; networks</a>
-    </nav>
+    <p class="lede">We work with charities, foundations, social enterprises, member networks, and companies with a mission. The pressures differ, but the same jobs tend to eat a team's time.</p>
+    <p class="why-not"><b>Why not any company?</b> Because time is precious and we would rather use ours to help organisations creating a positive impact.</p>
   </div>
 </section>
 
@@ -357,20 +359,55 @@ h1,h2,h3,h4{letter-spacing:-.02em}
   </div>
 </section>
 
-<section class="glance">
+<section class="drains">
   <div class="wrap">
     <div class="head">
-      <span class="eyebrow">At a glance</span>
-      <h2>Where the time goes, by area</h2>
-      <p class="lede">The recurring jobs that eat staff time in each area. These are usually where a first sprint starts.</p>
+      <span class="eyebrow">Sound familiar?</span>
+      <h2>Where does the time go?</h2>
+      <p class="lede">The recurring jobs we hear about most. Tap the ones that eat your week. That's usually where a first sprint starts.</p>
     </div>
-    <div class="tablewrap"><table id="matrix"></table></div>
-    <div class="legend"><span><i class="dot d3"></i> Main pain point</span><span><i class="dot d2"></i> Common</span><span><i class="dot d1"></i> Minor or rare</span></div>
+    <div class="dgroups">
+      <div class="dgroup"><h3><span>01</span>People asking for help</h3>
+        <button type="button" class="drain" data-d="answer" aria-pressed="false"><b>Answering the same questions</b><span>Enquiries by phone, email and chat that staff have answered a hundred times before.</span></button>
+        <button type="button" class="drain" data-d="intake" aria-pressed="false"><b>Intake and triage</b><span>Reading every new request, working out what it needs and passing it to the right person.</span></button>
+        <button type="button" class="drain" data-d="cases" aria-pressed="false"><b>Case notes and handovers</b><span>Writing up conversations and briefing a colleague who picks up the case.</span></button>
+      </div>
+      <div class="dgroup"><h3><span>02</span>Volunteers and the team</h3>
+        <button type="button" class="drain" data-d="onboard" aria-pressed="false"><b>Onboarding volunteers</b><span>Briefing new people, sharing procedures and fielding their questions in the first weeks.</span></button>
+        <button type="button" class="drain" data-d="sched" aria-pressed="false"><b>Scheduling and matching</b><span>Lining up volunteers, mentors, sessions and rooms, usually over long email threads.</span></button>
+        <button type="button" class="drain" data-d="meet" aria-pressed="false"><b>Meetings and follow-ups</b><span>Notes, actions and reminders that slip when the week gets busy.</span></button>
+      </div>
+      <div class="dgroup"><h3><span>03</span>Reporting and admin</h3>
+        <button type="button" class="drain" data-d="report" aria-pressed="false"><b>Funder and impact reports</b><span>The same numbers rewritten in a different format for every funder.</span></button>
+        <button type="button" class="drain" data-d="data" aria-pressed="false"><b>Pulling data together</b><span>Copying figures between spreadsheets, forms and systems before anyone can use them.</span></button>
+        <button type="button" class="drain" data-d="apps" aria-pressed="false"><b>Applications and admin</b><span>Writing grant applications, or checking the ones you receive for missing pieces.</span></button>
+      </div>
+      <div class="dgroup"><h3><span>04</span>Writing and knowledge</h3>
+        <button type="button" class="drain" data-d="plain" aria-pressed="false"><b>Plain language and translation</b><span>Rewriting letters, guides and web pages so everyone can understand them.</span></button>
+        <button type="button" class="drain" data-d="news" aria-pressed="false"><b>Newsletters and updates</b><span>Member, donor and supporter comms that take longer than they should.</span></button>
+        <button type="button" class="drain" data-d="find" aria-pressed="false"><b>Finding information</b><span>Knowledge spread across drives, inboxes and people's heads.</span></button>
+      </div>
+    </div>
+    <div class="dpicked" id="dpicked" hidden><span id="dcount"></span> <a href="#finder">See where AI could help with these</a></div>
   </div>
 </section>
 
-<section style="padding-top:0">
-  <div class="wrap pillars" id="pillars"></div>
+<section class="finder" id="finder">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Where AI could help first</span>
+      <h2>Tell us a little about your organisation</h2>
+      <p class="lede">Select from the filters below to see more tailored suggestions of where AI might help save your team time. This is a thought starter, we dig into specifics in the intro call.</p>
+    </div>
+    <div class="fbox">
+      <form class="filters" id="filters" aria-label="About your organisation"></form>
+      <div class="results" aria-live="polite">
+        <div class="rhead"><h3 id="rtitle">Where AI often helps first</h3><button type="button" class="reset" id="freset" hidden>Clear choices</button></div>
+        <ol id="rlist"></ol>
+        <div class="care" id="rcare"></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="story" id="experience">
@@ -394,50 +431,64 @@ h1,h2,h3,h4{letter-spacing:-.02em}
 </main>
 
 <script>
+/* Where AI could help first: pick a few facts, get a ranked best guess */
 (function(){
-  var P=[["intake","Intake & triage of requests"],["vol","Volunteer onboarding & knowledge"],["report","Impact & funder reporting"],["plain","Plain-language (B1) content"],["research","Policy & research"],["comms","Donor & member comms"],["admin","Applications & admin"]];
-  var T=[
-    {id:"poverty",name:"Poverty, debt & basic needs",
-     ctx:"National bodies that support networks of local branches and volunteers, helping households with debt, food and school costs. Demand keeps rising while most help is given by volunteers.",
-     m:{intake:3,vol:3,report:3,plain:3,research:1,comms:2,admin:3},
-     ai:[["A knowledge assistant for volunteers","Answers on debt rules and local procedures, so coordinators aren't the helpdesk."],["Completeness checks on applications","Spots missing documents before a person reviews the application."],["All information in one place","Consolidation of information into one easy-to-use tool for staff and service users."],["One build, every branch","Built once nationally, then rolled out to each local branch."]],
-     care:"AI never decides who is eligible for support. It prepares the file; a person decides."},
-    {id:"youth",name:"Children, youth & education",
-     ctx:"Programmes that bring guest teachers, mentors and companies into schools and neighbourhoods. A lot of matching and scheduling, and heavy reporting to corporate and foundation funders.",
-     m:{intake:2,vol:3,report:3,plain:2,research:1,comms:2,admin:3},
-     ai:[["Scheduling and briefing volunteers","Fewer emails to arrange thousands of guest lessons and mentor sessions."],["Lesson material from templates","First drafts that teachers then shape."],["Funder and sponsor reports","Drafted from programme data, in each funder's format."]],
-     care:"Children's data stays out of consumer tools. We agree data classes before choosing any tool."},
-    {id:"health",name:"Health & patient organisations",
-     ctx:"Member associations for people with a condition or disability, often on a fixed VWS subsidy plus member fees. The helpdesk answers the same questions daily, and everything must be easy to read.",
-     m:{intake:3,vol:2,report:2,plain:3,research:2,comms:3,admin:1},
-     ai:[["A member helpdesk assistant","Handles common practical questions and hands everything else to staff."],["Easy-read content","Magazine and web content in plain language, checked by a person."],["Making sense of member feedback","Survey and panel answers summarised by theme."]],
-     care:"No medical advice from AI. Health and crisis questions always go to a person."},
-    {id:"migration",name:"Refugees, migration & inclusion",
-     ctx:"Organisations helping newcomers into study, work and housing, usually through case-by-case support. Case files are long, communication is multilingual, and the data is highly sensitive.",
-     m:{intake:3,vol:2,report:2,plain:3,research:1,comms:2,admin:3},
-     ai:[["Case file summaries","Faster handovers between coaches, using approved business tools only."],["Translating and simplifying letters","Official letters explained in plain language, with a native-speaker check."],["Suggesting vacancies and courses","Options for a coach to review with the person, not a ranking."],["All information in one place","Consolidation of information into one easy-to-use tool for staff and service users."]],
-     care:"Strict data rules come first here. We start with workflows that don't touch personal data."},
-    {id:"intl",name:"International development & human rights",
-     ctx:"Dutch-based organisations working with partners abroad, mostly funded through government and foundation programmes. Reporting load is very high, and budgets are shrinking with Dutch aid cuts.",
-     m:{intake:1,vol:1,report:3,plain:2,research:3,comms:2,admin:3},
-     ai:[["Consolidating partner reports","Many partner reports turned into one funder report, reviewed by staff."],["Policy and research summaries","Long documents and consultations summarised for the team."],["Handling application volume","Summaries of many small project applications for reviewers."]],
-     care:"With budgets under pressure, we lead with hours saved and keep the sprint tightly scoped."},
-    {id:"networks",name:"Social enterprises & member networks",
-     ctx:"Social enterprises that pay from their own revenue, and umbrella bodies that serve many organisations. Both deal with steady streams of enquiries and member communication.",
-     m:{intake:2,vol:1,report:2,plain:1,research:2,comms:3,admin:2},
-     ai:[["Member and client enquiries","A knowledge base that answers the routine questions."],["Guidance for members","Sector updates and regulation summarised for member organisations."],["Proposals and comms","First drafts of proposals, newsletters and updates."]],
-     care:"For umbrella bodies, we can also run a members' session on using AI well."}
+  var G=[
+    ["area","Impact area",[["poverty","Poverty & basic needs"],["youth","Children, youth & education"],["health","Health & care"],["migration","Refugees, migration & inclusion"],["intl","Development & human rights"],["climate","Climate & environment"],["culture","Arts, culture & community"],["network","Member network or umbrella body"]]],
+    ["size","Paid staff",[["s1","1 to 10"],["s2","11 to 50"],["s3","51 to 250"],["s4","Over 250"]]],
+    ["vol","Volunteer community",[["v0","None or a few"],["v1","Up to 100"],["v2","100 to 1,000"],["v3","Over 1,000"]]],
+    ["reach","Where you work",[["local","Local"],["national","National"],["global","International"]]],
+    ["fund","Main funding",[["grants","Grants and foundations"],["gov","Government"],["members","Members and donors"],["income","Own income"]]],
+    ["data","Sensitive personal data",[["yes","We handle a lot"],["no","Very little"]]]
   ];
-  var lvl={3:"Main pain point",2:"Common",1:"Minor or rare"};
-  document.getElementById("matrix").innerHTML="<thead><tr><th scope=\"col\">Area</th>"+P.map(function(p){return "<th scope=\"col\">"+p[1]+"</th>"}).join("")+"</tr></thead><tbody>"+
-    T.map(function(t){return "<tr><td><a href=\"#"+t.id+"\">"+t.name.replace(/&/g,"&amp;")+"</a></td>"+P.map(function(p){var v=t.m[p[0]];return "<td data-label=\""+p[1].replace(/&/g,"&amp;")+"\"><i class=\"dot d"+v+"\" title=\""+lvl[v]+"\" aria-label=\""+lvl[v]+"\"></i></td>"}).join("")+"</tr>"}).join("")+"</tbody>";
-  document.getElementById("pillars").innerHTML=T.map(function(t,i){
-    var pains=P.filter(function(p){return t.m[p[0]]>=2}).sort(function(a,b){return t.m[b[0]]-t.m[a[0]]});
-    return "<article class=\"pillar\" id=\""+t.id+"\"><div class=\"left\"><span class=\"num\">Area "+(i+1)+" of 6</span><h3>"+t.name.replace(/&/g,"&amp;")+"</h3><p class=\"ctx\">"+t.ctx+"</p><div class=\"pains\" aria-label=\"Key pain points\">"+
-      pains.map(function(p){return "<span class=\""+(t.m[p[0]]===3?"main":"")+"\">"+p[1].replace(/&/g,"&amp;")+"</span>"}).join("")+
-      "</div></div><div class=\"right\"><h4>Where AI can help first</h4><ul>"+t.ai.map(function(a){return "<li><b>"+a[0]+"</b><span>"+a[1]+"</span></li>"}).join("")+
-      "</ul><p class=\"care\"><b>Handled with care:</b> "+t.care+"</p></div></article>";
-  }).join("");
+  var I=[
+    ["A knowledge assistant for volunteers","Answers on procedures and local rules, so coordinators stop being the helpdesk.",1,{v2:3,v3:4,v1:1,poverty:2,youth:1,national:1}],
+    ["Scheduling and briefing volunteers","Fewer emails to line up shifts, sessions and mentors, and to brief people before they start.",1,{v2:3,v3:3,youth:2,culture:1}],
+    ["Funder reports drafted from your data","First drafts in each funder's format, from the numbers you already collect.",2,{grants:3,gov:2,s2:1,s3:1,youth:1,intl:1}],
+    ["One report from many partner reports","Partner updates from different countries pulled into one report, reviewed by staff.",0,{global:4,intl:3,gov:1}],
+    ["An enquiry assistant for members or clients","Handles the common practical questions and passes everything else to a person.",1,{health:3,network:3,members:2,s3:1,s4:2}],
+    ["Plain-language and easy-read content","Letters, guides and web pages rewritten for everyone, checked by a person.",1,{health:2,migration:3,poverty:2,local:1}],
+    ["Official letters explained and translated","Letters from authorities explained in plain language, with a native-speaker check.",0,{migration:4,poverty:2}],
+    ["Completeness checks on applications","Spots missing documents before a person reviews an application.",1,{poverty:2,intl:1,gov:1,s3:1,s4:1}],
+    ["Case note summaries for handovers","Faster handovers between colleagues, using approved business tools only.",0,{yes:3,migration:2,poverty:1,health:1}],
+    ["Policy and research summaries","Long reports, rules and consultations summarised for the team.",1,{intl:2,climate:3,network:2,global:1}],
+    ["First drafts of newsletters and updates","Member, donor and supporter updates that start from a draft, not a blank page.",1,{members:3,network:2,culture:2,s1:2}],
+    ["All information in one place","Consolidation of information into one easy-to-use tool for staff and service users.",2,{s3:2,s4:2,national:2,v3:1}],
+    ["Meeting notes and follow-ups","Notes, actions and reminders handled, so nothing slips in a busy week.",1,{s1:3,s2:1}],
+    ["Making sense of feedback and surveys","Open answers from members, clients or participants summarised by theme.",0,{health:2,members:2,culture:1,climate:1}],
+    ["First drafts of grant applications","A first version built from your past applications and programme facts.",1,{grants:3,s1:2,climate:1,culture:2}]
+  ];
+  var CARE={yes:"With sensitive data, we start with workflows that don't touch personal data, and only use approved business tools.",youth:"Children's data stays out of consumer tools. We agree data rules before choosing any tool.",health:"No medical advice from AI. Health and crisis questions always go to a person.",poverty:"AI never decides who is eligible for support. It prepares the file; a person decides.",migration:"Translations and letters always get a check by a person who speaks the language."};
+  var D={answer:[4,0],intake:[7,4],cases:[8],onboard:[0,1],sched:[1],meet:[12],report:[2,3],data:[11,2],apps:[14,7],plain:[5,6],news:[10],find:[11,9]};
+  var picked={},dname={};document.querySelectorAll(".drain").forEach(function(b){dname[b.dataset.d]=b.querySelector("b").textContent;
+    b.addEventListener("click",function(){var on=b.getAttribute("aria-pressed")!=="true";b.setAttribute("aria-pressed",on);if(on)picked[b.dataset.d]=1;else delete picked[b.dataset.d];
+      var n=Object.keys(picked).length,box=document.getElementById("dpicked");box.hidden=!n;document.getElementById("dcount").textContent="You picked "+n+(n===1?" time drain.":" time drains.");draw()})});
+  var lab={},sel={};G.forEach(function(g){g[2].forEach(function(o){lab[o[0]]=o[1]})});
+  var f=document.getElementById("filters"),list=document.getElementById("rlist"),care=document.getElementById("rcare"),title=document.getElementById("rtitle"),reset=document.getElementById("freset");
+  var grp={};G.forEach(function(g){g[2].forEach(function(o){grp[o[0]]=g[0]})});
+  function why0(k){var g=grp[k],l=lab[k];return g==="size"?l+" staff":g==="vol"?(k==="v0"?"few volunteers":l.toLowerCase()+" volunteers"):g==="data"?(k==="yes"?"sensitive personal data":"little personal data"):g==="reach"?(k==="global"?"international work":l.toLowerCase()+" work"):g==="fund"?l.toLowerCase()+" funding":l}
+  function esc(t){return t.replace(/&/g,"&amp;")}
+  f.innerHTML=G.map(function(g){return '<fieldset><legend>'+g[1]+'</legend><div class="opts">'+g[2].map(function(o){return '<label><input type="radio" name="'+g[0]+'" value="'+o[0]+'"><span>'+esc(o[1])+'</span></label>'}).join("")+'</div><select name="'+g[0]+'" aria-label="'+g[1]+'"><option value="">Any</option>'+g[2].map(function(o){return '<option value="'+o[0]+'">'+esc(o[1])+'</option>'}).join("")+'</select></fieldset>'}).join("");
+  function sync(){G.forEach(function(g){var v=sel[g[0]]||"";f.querySelector('select[name="'+g[0]+'"]').value=v;f.querySelectorAll('input[name="'+g[0]+'"]').forEach(function(i){i.checked=i.value===v})})}
+  function draw(){
+    var keys=Object.keys(sel).map(function(k){return sel[k]});
+    var r=I.map(function(it,n){var why=keys.filter(function(k){return it[3][k]}),dp=Object.keys(picked).filter(function(d){return D[d].indexOf(n)>-1});
+      return {it:it,n:n,why:why.map(function(k){return why0(k)}).concat(dp.map(function(d){return dname[d].toLowerCase()})),score:it[2]+why.reduce(function(a,k){return a+it[3][k]},0)+dp.length*3}})
+      .sort(function(a,b){return b.score-a.score||a.n-b.n}).slice(0,4);
+    list.innerHTML=r.map(function(x){return '<li><b>'+x.it[0]+'</b><span>'+x.it[1]+'</span>'+(x.why.length?'<small>Fits because: <em>'+x.why.map(esc).join(", ")+'</em></small>':'')+'</li>'}).join("");
+    var c=["yes","youth","health","poverty","migration"].filter(function(k){return keys.indexOf(k)>-1}).map(function(k){return CARE[k]});
+    care.innerHTML='<b>Handled with care:</b> '+(c.length?c.slice(0,2).join(" "):"Every idea is a starting point. We agree data rules and red lines in week 1, before choosing any tool.");
+    title.textContent=(keys.length||Object.keys(picked).length)?"Our best guess for you":"Where AI often helps first";
+    reset.hidden=!keys.length;
+  }
+  f.addEventListener("click",function(e){var i=e.target.closest("input");if(!i)return;
+    if(sel[i.name]===i.value){i.checked=false;delete sel[i.name]}else sel[i.name]=i.value;sync();draw()});
+  f.addEventListener("keydown",function(e){var i=e.target.closest("input");if(i&&(e.key===" "||e.key==="Enter")&&sel[i.name]===i.value){e.preventDefault();i.checked=false;delete sel[i.name];draw()}});
+  f.addEventListener("change",function(e){var i=e.target;
+    if(i.tagName==="SELECT"){if(i.value)sel[i.name]=i.value;else delete sel[i.name]}else if(i.checked)sel[i.name]=i.value;
+    sync();draw()});
+  reset.addEventListener("click",function(){sel={};sync();draw()});
+  draw();
 })();
 </script>
 <footer>
