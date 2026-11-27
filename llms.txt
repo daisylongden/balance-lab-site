@@ -16,4 +16,4 @@ How we work:
 - [Home](https://balance-lab.nl/): what Balance Lab does, the process, prices and FAQ
 - [Who we work with](https://balance-lab.nl/who-we-work-with/): the mission-driven organisations we work with and the pressures they share
 - [How we use AI](https://balance-lab.nl/how-we-use-ai/): our values, red lines and the commitments we keep on every project
-- [The Ops Table](https://balance-lab.nl/the-ops-table/): a free monthly community in Amsterdam for ops, finance and people leads in mission-driven work
+- [The Ops Table](https://balance-lab.nl/the-ops-table/): a monthly community in Amsterdam for ops, finance and people leads in mission-driven work
